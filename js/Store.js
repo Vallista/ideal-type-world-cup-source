@@ -11,6 +11,11 @@ class Store {
         }
 
         this.Page = new PageContainer('MainPage');
+        this.values = {
+            currentRound: 0,
+            maxRound: 2,
+            sex: 'man',
+        };
 
         return instance;
     }

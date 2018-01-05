@@ -17,6 +17,13 @@ class MainTemplate extends Component {
         };
     }
 
+    update() {
+        this.layout.TitleBox.update();
+        this.layout.RoundSelectBox.update();
+        this.layout.SelectGenderBox.update();
+        this.layout.GameStartBox.update();
+    }
+
     render() {
         return `
             <div class="main-template flex-container flex-center-sort flex-column">

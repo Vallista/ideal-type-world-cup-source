@@ -5,6 +5,10 @@ class Page {
 
     }
 
+    update() {
+
+    }
+
     render() {
 
     }

@@ -9,6 +9,10 @@ class ResultPage extends Component {
         this.template = new Template();
     }
 
+    update() {
+        this.template.update();
+    }
+
     render() {
         return `
             ${this.template.render()}

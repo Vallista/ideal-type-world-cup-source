@@ -10,3 +10,5 @@ var Store = new store;
 document.getElementById('output').innerHTML = `
     ${Store.Page.render()}
 `;
+
+Store.Page.update();

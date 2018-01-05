@@ -13,6 +13,13 @@ class GameStartButton extends Component {
         });
     }
 
+    update() {
+        const t = document.getElementsByClassName("main-game-start__button")[0];
+        t.addEventListener('click', () => {
+            console.log('asd');
+        });
+    }
+
     render() {
         return `
             <div class="main-game-start-wrapper">

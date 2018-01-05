@@ -7,6 +7,10 @@ class ResultTemplate extends Component {
         super();
     }
 
+    update() {
+
+    }
+
     render() {
         return `
         `;

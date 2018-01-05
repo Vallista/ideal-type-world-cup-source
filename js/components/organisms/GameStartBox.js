@@ -9,6 +9,10 @@ class GameStartBox extends Component {
         this.gameStartButton = new GameStartButton();
     }
 
+    update() {
+        this.gameStartButton.update();
+    }
+
     render() {
         return `
             <div class="main-game-start__box flex-container flex-center-sort flex-row">

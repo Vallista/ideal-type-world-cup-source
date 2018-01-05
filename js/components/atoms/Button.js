@@ -11,7 +11,7 @@ class Button extends Component {
 
     render() {
         return `
-            <Button class="common__button ${this.style}">${this.title}</Button>
+            <Button class="${this.style} common__button">${this.title}</Button>
         `;
     }
 }
