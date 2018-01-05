@@ -9,8 +9,8 @@ class MainPage extends Component {
         this.template = new Template();
     }
 
-    update() {
-        this.template.update();
+    mount() {
+        this.template.mount();
     }
 
     render() {

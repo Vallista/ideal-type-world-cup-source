@@ -1,8 +1,6 @@
 'use strict';
 
-import PageContainer from './pages/PageContainer';
-
-let instance = null;
+var instance = null;
 
 class Store {
     constructor() {
@@ -10,7 +8,6 @@ class Store {
             instance = this;
         }
 
-        this.Page = new PageContainer('MainPage');
         this.values = {
             currentRound: 0,
             maxRound: 2,

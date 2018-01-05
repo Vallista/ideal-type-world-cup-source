@@ -13,6 +13,11 @@ class SelectGenderBox extends Component {
         }
     }
 
+    mount() {
+        this.buttons.manButton.mount();
+        this.buttons.womanButton.mount();
+    }
+
     render() {
         return `
             <div class="main-select-gender__box flex-container flex-center-sort flex-row">

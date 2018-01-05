@@ -5,7 +5,7 @@ class Page {
 
     }
 
-    update() {
+    mount() {
 
     }
 

@@ -2,6 +2,7 @@
 
 import Component from './../../lib/Component';
 import Select from './../atoms/Select';
+import Store from "../../Store";
 
 class RoundSelect extends Component {
     constructor() {
@@ -16,13 +17,22 @@ class RoundSelect extends Component {
                 '4강',
                 '2강',
             ],
-            style: '',
-        })
+            style: 'main-round__select',
+        });
+
+        this.store = new Store();
+    }
+
+    mount() {
+        const t = document.getElementsByClassName("main-round__select")[0];
+        t.addEventListener('change', (event) => {
+            this.store.values.maxRound = parseInt(event.target.value.split('강')[0]);
+        });
     }
 
     render() {
         return `
-            <div class="main-round__select">
+            <div class="main-round-wrapper">
                 ${this.select.render()}
             </div>
         `;

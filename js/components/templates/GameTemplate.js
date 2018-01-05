@@ -7,7 +7,7 @@ class GameTemplate extends Component {
         super();
     }
 
-    update() {
+    mount() {
 
     }
 

@@ -2,7 +2,6 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
-import Store from "./../../Store";
 
 class GameStartButton extends Component {
     constructor() {
@@ -13,10 +12,10 @@ class GameStartButton extends Component {
         });
     }
 
-    update() {
+    mount() {
         const t = document.getElementsByClassName("main-game-start__button")[0];
         t.addEventListener('click', () => {
-            console.log('asd');
+            location.href = "#/game";
         });
     }
 

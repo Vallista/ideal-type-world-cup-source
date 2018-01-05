@@ -2,6 +2,7 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
+import Store from './../../Store';
 
 class ManButton extends Component {
     constructor() {
@@ -10,12 +11,14 @@ class ManButton extends Component {
             title: '남자',
             style: 'main-select-gender-man__button',
         });
+
+        this.store = new Store();
     }
 
-    update() {
+    mount() {
         const t = document.getElementsByClassName("main-select-gender-man__button")[0];
         t.addEventListener('click', () => {
-            console.log('man');
+            this.store.values.sex = 'man';
         });
     }
 

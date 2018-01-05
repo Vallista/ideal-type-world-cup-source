@@ -9,6 +9,10 @@ class RoundSelectBox extends Component {
         this.roundSelect = new RoundSelect();
     }
 
+    mount() {
+        this.roundSelect.mount();
+    }
+
     render() {
         return `
             <div class="main-round-select__box flex-container flex-center-sort flex-row">
