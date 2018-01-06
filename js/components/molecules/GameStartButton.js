@@ -13,7 +13,7 @@ class GameStartButton extends Component {
     }
 
     mount() {
-        const t = document.getElementsByClassName("main-game-start__button")[0];
+        const t = document.querySelector(".main-game-start__button");
         t.addEventListener('click', () => {
             location.href = "#/game";
         });

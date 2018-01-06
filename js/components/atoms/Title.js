@@ -11,7 +11,7 @@ class Title extends Component {
 
     render() {
         return `
-            <p class="font-size-xxxx-large ${this.style}">${this.title}</p>
+            <p class="${this.style} font-size-xxxx-large">${this.title}</p>
         `;
     }
 }

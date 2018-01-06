@@ -10,7 +10,8 @@ class Store {
 
         this.values = {
             currentRound: 0,
-            maxRound: 2,
+            stage: 1,
+            maxRound: 16,
             sex: 'man',
         };
 

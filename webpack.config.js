@@ -48,7 +48,16 @@ module.exports = {
                     includePaths: ["sass"]
                 }
             }]
-        }]
+        },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
+            }]
     },
     plugins: [
         // Simply copies the files over
