@@ -17,7 +17,6 @@ class Manager extends Component {
     }
 
     mount(pageName) {
-        console.log(pageName);
         return this.GetPage.find((page) => { return page.name === pageName; }).page.mount();
     }
 
