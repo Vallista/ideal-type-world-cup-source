@@ -7,7 +7,7 @@ class ResultTemplate extends Component {
         super();
     }
 
-    mount() {
+    mount(event) {
 
     }
 

@@ -10,12 +10,11 @@ class Store {
 
         this.values = {
             currentStage: 1,
+            displayStage: 16,
             stage: 16,
             currentRound: 1,
             sex: 'man',
         };
-
-        this.result = [];
 
         return instance;
     }

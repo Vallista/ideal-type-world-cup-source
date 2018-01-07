@@ -8,12 +8,11 @@ class MainPage extends Component {
     constructor() {
         super();
         this.store = new Store();
-
         this.template = new Template();
     }
 
-    mount() {
-        this.template.mount();
+    mount(event) {
+        this.template.mount(event);
     }
 
     render() {

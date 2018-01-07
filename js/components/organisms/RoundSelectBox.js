@@ -9,8 +9,8 @@ class RoundSelectBox extends Component {
         this.roundSelect = new RoundSelect();
     }
 
-    mount() {
-        this.roundSelect.mount();
+    mount(event) {
+        this.roundSelect.mount(event);
     }
 
     render() {

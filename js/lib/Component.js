@@ -5,7 +5,7 @@ class Page {
 
     }
 
-    mount() {
+    mount(event) {
 
     }
 

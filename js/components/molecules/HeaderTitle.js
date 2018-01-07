@@ -15,10 +15,24 @@ class HeaderTitle extends Component {
         this.titleEvent = this.titleEvent.bind(this);
     }
 
+    mount(event) {
+        event.titleEvent = this.titleEvent;
+    }
+
     titleEvent() {
         const title = document.querySelector(".game-header__title");
-        const stage = this.store.values.stage;
-        title.innerHTML = `이상형 월드컵 ${stage}강 ${this.store.values.currentRound} / ${(stage / 2)}`;
+        let stage = this.store.values.displayStage;
+
+        switch(stage) {
+            case 128: stage = "128강"; break;
+            case 64: stage = "64강"; break;
+            case 32: stage = "32강"; break;
+            case 16: stage = "16강"; break;
+            case 8: stage = "8강"; break;
+            case 4: stage = "4강"; break;
+            case 2: stage = "결승전"; break;
+        }
+        title.innerHTML = `이상형 월드컵 ${stage} ${this.store.values.currentRound} / ${this.store.values.displayStage / 2}`;
     }
 
     render() {

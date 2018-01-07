@@ -17,11 +17,11 @@ class MainTemplate extends Component {
         };
     }
 
-    mount() {
-        this.layout.TitleBox.mount();
-        this.layout.RoundSelectBox.mount();
-        this.layout.SelectGenderBox.mount();
-        this.layout.GameStartBox.mount();
+    mount(event) {
+        this.layout.TitleBox.mount(event);
+        this.layout.RoundSelectBox.mount(event);
+        this.layout.SelectGenderBox.mount(event);
+        this.layout.GameStartBox.mount(event);
     }
 
     render() {

@@ -10,18 +10,22 @@ class GameContainer extends Container {
 
         this.store = new Store();
         this.tree = new Tree();
-    }
 
-    dataLoad() {
-
+        this.next = this.next.bind(this);
+        this.choiceCharacter = this.choiceCharacter.bind(this);
+        this.showNowCard = this.showNowCard.bind(this);
+        this.selectNode = this.selectNode.bind(this);
     }
 
     next() {
         this.store.values.currentRound ++;
 
-        if(this.store.values.currentRound > (this.store.values.stage / (2 * (this.store.values.currentStage - 1)))) {
-            this.store.values.currentRound = 0;
+        const pos = (2 * (this.store.values.currentStage));
+        const maxRound = (this.store.values.stage / pos);
+        if(this.store.values.currentRound > maxRound) {
+            this.store.values.currentRound = 1;
             this.store.values.currentStage++;
+            this.store.values.displayStage = this.store.values.displayStage / 2;
         }
     }
 
@@ -40,6 +44,14 @@ class GameContainer extends Container {
 
         this.tree.init(this.store.values.sex === 'man' ? man_group : woman_group);
     }
+
+    showNowCard() {
+        return this.tree.showNowCard();
+    }
+
+    selectNode(dir) {
+        return this.tree.selectNode(dir);
+    }
 }
 
 class Node {
@@ -57,6 +69,11 @@ class Tree {
         this.nodeArray = [];
         this.resultArray = [];
         this.store = new Store();
+
+        this.randomizeImg = this.randomizeImg.bind(this);
+        this.init = this.init.bind(this);
+        this.selectNode = this.selectNode.bind(this);
+        this.showNowCard = this.showNowCard.bind(this);
     }
 
     init(array) {
@@ -86,19 +103,25 @@ class Tree {
     selectNode(dir) {
         if(this.resultArray[this.store.values.currentStage + 1] == null) this.resultArray.push([]);
 
+        const x = (this.store.values.currentRound - 1) * 2;
+        const y = this.store.values.currentStage - 1;
+
         if(dir === 'left') {
-            const pos = this.resultArray[this.store.values.currentStage][(this.store.values.currentRound * 2) - 1];
-            this.resultArray[this.store.values.currentStage + 1].push(pos);
+            const pos = this.resultArray[y][x];
+            this.resultArray[y + 1].push(pos);
         } else {
-            const pos = this.resultArray[this.store.values.currentStage][(this.store.values.currentRound * 2) - 1];
-            this.resultArray[this.store.values.currentStage + 1].push(pos);
+            const pos = this.resultArray[y][x + 1];
+            this.resultArray[y + 1].push(pos);
         }
     }
 
     showNowCard() {
+        const x = (this.store.values.currentRound - 1) * 2;
+        const y = this.store.values.currentStage - 1;
+
         return {
-            left: this.resultArray[this.store.values.currentStage][(this.store.values.currentRound * 2 - 1)].src,
-            right: this.resultArray[this.store.values.currentStage][(this.store.values.currentRound * 2 )].src,
+            left: this.resultArray[y][x].data.src,
+            right: this.resultArray[y][x + 1].data.src,
         };
     }
 }

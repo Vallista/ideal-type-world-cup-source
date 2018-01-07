@@ -13,8 +13,11 @@ class GamePage extends Component {
         this.container.initializeGame();
     }
 
-    mount() {
-        this.template.mount();
+    mount(event) {
+        event.next = this.container.next;
+        event.showNowCard = this.container.showNowCard;
+        event.selectNode = this.container.selectNode;
+        this.template.mount(event);
     }
 
     render() {

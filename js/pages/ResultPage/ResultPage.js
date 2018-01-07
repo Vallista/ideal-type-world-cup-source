@@ -11,9 +11,8 @@ class ResultPage extends Component {
         this.store = new Store();
     }
 
-    mount() {
-        this.template.mount();
-        console.log(this.store.values.maxRound);
+    mount(event) {
+        this.template.mount(event);
     }
 
     render() {

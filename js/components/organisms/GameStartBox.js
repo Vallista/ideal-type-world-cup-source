@@ -9,8 +9,8 @@ class GameStartBox extends Component {
         this.gameStartButton = new GameStartButton();
     }
 
-    mount() {
-        this.gameStartButton.mount();
+    mount(event) {
+        this.gameStartButton.mount(event);
     }
 
     render() {

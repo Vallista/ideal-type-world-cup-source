@@ -11,9 +11,9 @@ class InGameContents extends Component {
         this.rightIdealTypeCard = new IdealTypeCard('right');
     }
 
-    mount(headerEvent) {
-        this.leftIdealTypeCard.mount(headerEvent);
-        this.rightIdealTypeCard.mount(headerEvent);
+    mount(event) {
+        this.leftIdealTypeCard.mount(event);
+        this.rightIdealTypeCard.mount(event);
     }
 
     render() {

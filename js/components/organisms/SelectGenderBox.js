@@ -13,9 +13,9 @@ class SelectGenderBox extends Component {
         }
     }
 
-    mount() {
-        this.buttons.manButton.mount();
-        this.buttons.womanButton.mount();
+    mount(event) {
+        this.buttons.manButton.mount(event);
+        this.buttons.womanButton.mount(event);
     }
 
     render() {

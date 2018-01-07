@@ -11,9 +11,9 @@ class GameTemplate extends Component {
         this.contents = new InGameContents();
     }
 
-    mount() {
-        this.header.mount();
-        this.contents.mount(this.header.headerEvent);
+    mount(event) {
+        this.header.mount(event);
+        this.contents.mount(event);
     }
 
     render() {

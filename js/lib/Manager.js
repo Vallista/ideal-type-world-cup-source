@@ -1,6 +1,7 @@
 'use strict';
 
 import Component from './Component';
+import Event from './Event';
 
 class Manager extends Component {
     constructor() {
@@ -17,7 +18,7 @@ class Manager extends Component {
     }
 
     mount(pageName) {
-        return this.GetPage.find((page) => { return page.name === pageName; }).page.mount();
+        return this.GetPage.find((page) => { return page.name === pageName; }).page.mount(Event);
     }
 
     render(pageName) {

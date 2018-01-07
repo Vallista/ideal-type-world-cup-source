@@ -16,16 +16,41 @@ class IdealTypeCard extends Component {
             style: 'game-ideal-type-card' + '-' + this.position + '__button',
             src: testImg,
         });
+
+        this.changeSrc = this.changeSrc.bind(this);
     }
 
-    mount(headerEvent) {
-        const button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
-        button.addEventListener('click', () => {
-            button.src = test;
-            this.store.result.push('123');
-            this.store.values.currentRound++;
-            headerEvent();
+    mount(event) {
+        // 아밴트 등록 (반대쪽이 눌려도 변경하도록)
+        this.position === 'left' ? event.leftChangeSrc = this.changeSrc : event.rightChangeSrc = this.changeSrc;
+
+        // 엘리먼트 쿼리 셀렉팅
+        this.button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
+        // 처음 한번 이미지 리로드
+        this.changeSrc(event.showNowCard);
+
+        this.button.addEventListener('click', () => {
+            // 클릭 이벤트 시
+
+            // 선택한 노드를 데이터에 저장시킴.
+            event.selectNode(this.position);
+
+            // 인덱스들을 증가 (스테이지 번호 증가)
+            event.next();
+
+            // 타이틀을 변경함.
+            event.titleEvent();
+
+            // 이미지를 변경
+            this.changeSrc(event.showNowCard);
+
+            // 반대쪽 카드를 변경
+            this.position === 'left' ? event.rightChangeSrc(event.showNowCard) : event.leftChangeSrc(event.showNowCard);
         });
+    }
+
+    changeSrc(event) {
+        this.position === 'left' ? this.button.src = event().left : this.button.src = event().right;
     }
 
     render() {

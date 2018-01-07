@@ -16,8 +16,9 @@ class InGameHeader extends Component {
         this.roundTreeViewButton = new RoundTreeViewButton();
     }
 
-    mount() {
-        this.roundBackButton.mount();
+    mount(event) {
+        this.roundBackButton.mount(event);
+        this.headerTitle.mount(event);
     }
 
     headerEvent() {
