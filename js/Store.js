@@ -15,6 +15,8 @@ class Store {
             sex: 'man',
         };
 
+        this.result = [];
+
         return instance;
     }
 }

@@ -2,27 +2,17 @@
 
 import 'babel-polyfill';
 import './../sass/main.sass';
-import PageContainer from "./pages/PageContainer";
-import { route, router } from './route';
+import PageManager from "./pages/PageManager";
+import { Router } from './route'
 
-const Page = new PageContainer();
-
-// hash change 하는 리스너를 만듭니다.
-window.addEventListener('hashchange', () => {router(Page)});
-// load 하는 리스너를 만듭니다.
-window.addEventListener('load', () => {router(Page)});
+const Page = new PageManager();
+const PageRouter = new Router(Page);
 
 ////////////////////////////////////////////////////////////////////////
 // 라우터를 지정하는 곳 입니다.
 
-route('/', 'MainPage', () => {
-    return `${Page.render('MainPage')}`;
-});
-route('/game', 'GamePage', () => {
-    return `${Page.render('GamePage')}`;
-});
-route('/result', 'ResultPage', () => {
-    return `${Page.render('ResultPage')}`;
-});
+PageRouter.route('/', 'MainPage');
+PageRouter.route('/game', 'GamePage');
+PageRouter.route('/result', 'ResultPage');
 
 ////////////////////////////////////////////////////////////////////////

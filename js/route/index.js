@@ -1,10 +1,10 @@
 'use strict';
 
-import { route, routes } from './route';
-import router from './router';
+import Router from './Router';
+import { routes, route } from './route';
 
 export {
     route,
     routes,
-    router,
+    Router,
 }

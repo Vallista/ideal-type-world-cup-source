@@ -7,8 +7,8 @@ class InGameContents extends Component {
     constructor() {
         super();
 
-        this.leftIdealTypeCard = new IdealTypeCard();
-        this.rightIdealTypeCard = new IdealTypeCard();
+        this.leftIdealTypeCard = new IdealTypeCard('left');
+        this.rightIdealTypeCard = new IdealTypeCard('right');
     }
 
     mount() {
