@@ -8,6 +8,9 @@ import RoundTreeViewButton from '../molecules/RoundTreeViewButton';
 class InGameHeader extends Component {
     constructor() {
         super();
+
+        this.headerEvent = this.headerEvent.bind(this);
+
         this.roundBackButton = new RoundBackButton();
         this.headerTitle = new HeaderTitle();
         this.roundTreeViewButton = new RoundTreeViewButton();
@@ -15,6 +18,10 @@ class InGameHeader extends Component {
 
     mount() {
         this.roundBackButton.mount();
+    }
+
+    headerEvent() {
+        this.headerTitle.titleEvent();
     }
 
     render() {

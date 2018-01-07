@@ -2,14 +2,15 @@
 
 import Component from './../../lib/Component';
 import Template from './../../components/templates/GameTemplate';
-import Store from "../../Store";
+import Container from '../../containers/GameContainer';
 
 class GamePage extends Component {
     constructor() {
         super();
-        this.store = new Store();
-        this.store.values.currentRound = 1;
         this.template = new Template();
+        this.container = new Container();
+
+        this.container.initializeGame();
     }
 
     mount() {

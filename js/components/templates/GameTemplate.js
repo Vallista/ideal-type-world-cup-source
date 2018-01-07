@@ -13,7 +13,7 @@ class GameTemplate extends Component {
 
     mount() {
         this.header.mount();
-        this.contents.mount();
+        this.contents.mount(this.header.headerEvent);
     }
 
     render() {

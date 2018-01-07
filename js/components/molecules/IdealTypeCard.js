@@ -18,11 +18,13 @@ class IdealTypeCard extends Component {
         });
     }
 
-    mount() {
-        const t = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
-        t.addEventListener('click', () => {
-            t.src = test;
+    mount(headerEvent) {
+        const button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
+        button.addEventListener('click', () => {
+            button.src = test;
             this.store.result.push('123');
+            this.store.values.currentRound++;
+            headerEvent();
         });
     }
 
