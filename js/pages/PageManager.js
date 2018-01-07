@@ -16,11 +16,11 @@ class PageManager extends Manager{
     }
 
     mount(pageName) {
-        super.mount(pageName);
+        return super.mount(pageName);
     }
 
     render(pageName) {
-        super.render(pageName);
+        return super.render(pageName);
     }
 }
 

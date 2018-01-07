@@ -17,11 +17,12 @@ class Manager extends Component {
     }
 
     mount(pageName) {
-        return ((pageName) => { this.GetPage.find((page) => { return page.name === pageName; }).page.mount() })(pageName);
+        console.log(pageName);
+        return this.GetPage.find((page) => { return page.name === pageName; }).page.mount();
     }
 
     render(pageName) {
-        return ((pageName) => { this.GetPage.find((page) => { return page.name === pageName; }).page.render() })(pageName);
+        return this.GetPage.find((page) => { return page.name === pageName; }).page.render();
     }
 }
 

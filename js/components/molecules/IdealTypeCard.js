@@ -22,9 +22,7 @@ class IdealTypeCard extends Component {
         const t = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
         t.addEventListener('click', () => {
             t.src = test;
-            console.log(this.position);
             this.store.result.push('123');
-            console.log(this.store.result.length);
         });
     }
 
