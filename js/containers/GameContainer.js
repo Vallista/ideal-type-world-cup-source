@@ -120,8 +120,8 @@ class Tree {
         const y = this.store.values.currentStage - 1;
 
         return {
-            left: this.resultArray[y][x].data.src,
-            right: this.resultArray[y][x + 1].data.src,
+            left: this.resultArray[y][x].data,
+            right: this.resultArray[y][x + 1].data,
         };
     }
 }

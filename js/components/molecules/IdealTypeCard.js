@@ -2,6 +2,7 @@
 
 import Component from './../../lib/Component';
 import Img from './../atoms/Img';
+import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
 import Store from './../../Store';
@@ -16,6 +17,10 @@ class IdealTypeCard extends Component {
             style: 'game-ideal-type-card' + '-' + this.position + '__button',
             src: testImg,
         });
+        this.p = new P({
+            text: 'text',
+            style: 'game-ideal-type-card' + '-' + this.position + '__text',
+        });
 
         this.changeSrc = this.changeSrc.bind(this);
     }
@@ -26,6 +31,7 @@ class IdealTypeCard extends Component {
 
         // 엘리먼트 쿼리 셀렉팅
         this.button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
+        this.name = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__text");
         // 처음 한번 이미지 리로드
         this.changeSrc(event.showNowCard);
 
@@ -50,13 +56,20 @@ class IdealTypeCard extends Component {
     }
 
     changeSrc(event) {
-        this.position === 'left' ? this.button.src = event().left : this.button.src = event().right;
+        if(this.position === 'left') {
+            this.button.src = event().left.src;
+            this.name.innerHTML = `${event().left.name}`;
+        } else {
+            this.button.src = event().right.src;
+            this.name.innerHTML = `${event().right.name}`;
+        }
     }
 
     render() {
         return `
             <div class="game-ideal-type-card-wrapper">
                 ${this.img.render()}
+                ${this.p.render()}
             </div>
         `;
     }
