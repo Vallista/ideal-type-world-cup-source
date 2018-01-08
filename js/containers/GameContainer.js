@@ -3,6 +3,7 @@
 import Container from './../lib/Container';
 import Store from './../Store';
 import { man_group, woman_group } from './../components/assets/Characters';
+import Router from "./../route/Router";
 
 /* 게임 컨테이너,
  * 컨테이너는 데이터를 만들고, 데이터를 각각의 템플릿에 넣어줌
@@ -18,25 +19,56 @@ class GameContainer extends Container {
 
         // 함수 바인딩
         this.next = this.next.bind(this);
+        this.back = this.back.bind(this);
         this.showNowCard = this.showNowCard.bind(this);
-        this.selectNode = this.selectNode.bind(this);
-        this.resultNode = this.resultNode.bind(this);
+        this.resultLocation = this.resultLocation.bind(this);
     }
 
-    /* 선택시 다음으로 데이터 옮김 */
-    next() {
+    /* 선택시 다음으로 데이터 옮김
+     * true : 게임 끝 (결과 출력)
+     * false : 게임 진행중 */
+    next(dir) {
         if(this.store.values.currentRound === 1 && (this.store.values.displayStage / 2) === 1)
             return true;
+
+        if(this.store.values.currentRound < this.store.values.displayStage / 2)
+            this.tree.addArrayNode(dir);
 
         this.store.values.currentRound ++;
 
         if(this.store.values.currentRound > this.store.values.displayStage / 2) {
+            this.tree.addNode(dir);
             this.store.values.currentRound = 1;
             this.store.values.currentStage++;
             this.store.values.displayStage = this.store.values.displayStage / 2;
         }
 
         return false;
+    }
+
+    /* 뒤로 되돌리고 싶을 때 */
+    back() {
+        // 현재 진행 회차가 1회를 넘어야 이벤트 활성 (처음)
+        if(this.store.values.currentRound === 1 && this.store.values.currentStage === 1 )
+            return;
+
+        // 현재 라운드 전으로 되돌림
+        this.store.values.currentRound --;
+
+        // 만약 현재 라운드의 처음 횟수보다 돌아가면
+        if(this.store.values.currentRound < 1) {
+            // 현재 돌아가는 스테이지를 이전 스테이지로 변경
+            this.store.values.currentStage --;
+            // 디스플레이 스테이지 2배 증가
+            this.store.values.displayStage = this.store.values.displayStage * 2;
+            // 현재 라운드를 마지막 라운드로 설정
+            this.store.values.currentRound = this.store.values.displayStage / 2;
+            // 트리 노드 삭제
+            this.tree.removeNode();
+        } else {
+            // 트리 노드 삭제
+            this.tree.removeArrayNode();
+        }
     }
 
     /* 게임 초기화 */
@@ -53,14 +85,15 @@ class GameContainer extends Container {
         return this.tree.showNowCard();
     }
 
-    /* 카드 선택시 카드를 트리 배열에 저장 */
-    selectNode(dir) {
-        return this.tree.selectNode(dir);
+    /* 최종 결과 출력 */
+    resultCard() {
+        return this.tree.resultNode();
     }
 
-    /* 최종 결과 출력 */
-    resultNode() {
-        return this.tree.resultNode();
+    /* 결과 페이지 이동 및 이벤트 */
+    resultLocation() {
+        this.store.result.node = this.resultCard();
+        Router.moveToLocation('ResultPage');
     }
 }
 
@@ -79,7 +112,7 @@ class Node {
 /* 트리 배열
  * init(array) : array로 배열을 초기화 함, 그러면서 데이터를 랜더마이즈 하여 트리에 넣음
  * randomizeImg() : 이미지를 섞음 (트리에 있는)
- * selectNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 트리에 저장.
+ * addNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 트리에 저장.
  * showNowCard() : 현재 트리의 대결하는 두 개의 노드를 가져오는 함수
  * resultNode() : 트리에서의 가장 최상단 최종 결과 노드를 가져오는 함수 */
 class Tree {
@@ -93,9 +126,12 @@ class Tree {
         // 함수 바인딩
         this.randomizeImg = this.randomizeImg.bind(this);
         this.init = this.init.bind(this);
-        this.selectNode = this.selectNode.bind(this);
+        this.addNode = this.addNode.bind(this);
+        this.addArrayNode = this.addArrayNode.bind(this);
         this.showNowCard = this.showNowCard.bind(this);
         this.resultNode = this.resultNode.bind(this);
+        this.removeNode = this.removeNode.bind(this);
+        this.removeArrayNode = this.removeArrayNode.bind(this);
     }
 
     /* 트리 초기화 */
@@ -107,7 +143,7 @@ class Tree {
         // 이미지를 선택한 강 수 만큼 덜어냄
         this.nodeArray = this.nodeArray.filter((node, index) => { return index < this.store.values.stage});
         // 트리 배열에 처음 배열을 삽입
-        this.resultArray = [this.nodeArray];
+        this.resultArray = [this.nodeArray, []];
     }
 
     /* 배열의 이미지들을 섞음, 이상형이 게임마다 대결을 다르게 함 */
@@ -131,23 +167,42 @@ class Tree {
     }
 
     /* 트리의 노드를 선택할 때 */
-    selectNode(dir) {
-        // 현재 트리의 다음 추가 트리가 없으면 트리 배열을 생성함, 혹은 마지막 결승전이라 다음 배열을 만들 필요 없으면 거름
-        if(this.resultArray[this.store.values.currentStage + 1] == null
-            && this.store.values.displayStage / 2 !== 1) this.resultArray.push([]);
-
+    addNode(dir) {
         // x, y 값을 설정
         const x = (this.store.values.currentRound - 1) * 2;
         const y = this.store.values.currentStage - 1;
+        // 기본적으로 왼쪽
+        let data = this.resultArray[y][x - 2];
 
-        // 왼쪽을 선택시
-        if(dir === 'left') {
-            const pos = this.resultArray[y][x];
-            this.resultArray[y + 1].push(pos);
-        } else { // 오른쪽 선택
-            const pos = this.resultArray[y][x + 1];
-            this.resultArray[y + 1].push(pos);
-        }
+        // 오른쪽 선택
+        if(dir === 'right') data = this.resultArray[y][x - 1];
+
+        this.resultArray[y + 1].push(data);
+        if((this.store.values.displayStage / 2) !== 2) { this.resultArray.push([]); }
+    }
+
+    addArrayNode(dir) {
+        // x, y 값을 설정
+        const x = (this.store.values.currentRound - 1) * 2;
+        const y = this.store.values.currentStage - 1;
+        // 기본적으로 왼쪽
+        let data = this.resultArray[y][x];
+
+        // 오른쪽 선택
+        if(dir === 'right') data = this.resultArray[y][x + 1];
+
+        this.resultArray[y + 1].push(data);
+    }
+
+    removeNode() {
+        if((this.store.values.displayStage / 2) !== 2) { this.resultArray.pop(); }
+        this.removeArrayNode();
+    }
+
+    removeArrayNode() {
+        const y = this.store.values.currentStage - 1;
+
+        this.resultArray[y + 1].pop();
     }
 
     /* 현재 트리 노드의 데이터 (카드) 왼쪽 오른쪽 가져옴 */

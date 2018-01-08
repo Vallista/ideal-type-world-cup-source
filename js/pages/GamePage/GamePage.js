@@ -14,10 +14,11 @@ class GamePage extends Component {
     mount(event) {
         this.container.initializeGame();
 
+        // 이벤트 등록
         event.next = this.container.next;
+        event.back = this.container.back;
         event.showNowCard = this.container.showNowCard;
-        event.selectNode = this.container.selectNode;
-        event.resultNode = this.container.resultNode;
+        event.resultLocation = this.container.resultLocation;
         this.template.mount(event);
     }
 

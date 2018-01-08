@@ -6,7 +6,6 @@ import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
 import Store from './../../Store';
-import Router from "./../../route/Router";
 
 class IdealTypeCard extends Component {
     constructor(position) {
@@ -41,13 +40,10 @@ class IdealTypeCard extends Component {
         this.button.addEventListener('click', () => {
             // 클릭 이벤트 시
 
-            // 선택한 노드를 데이터에 저장시킴.
-            event.selectNode(this.position);
-
             // 인덱스들을 증가 (스테이지 번호 증가)
-            if(event.next() === true) {
-                this.store.result.node = event.resultNode();
-                Router.moveToLocation('ResultPage');
+            if(event.next(this.position) === true) {
+                // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
+                event.resultLocation();
                 return;
             }
 
