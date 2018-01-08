@@ -2,20 +2,23 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
+import Router from "./../../route/Router";
+import Store from "./../../Store";
 
 class GameStartButton extends Component {
     constructor() {
         super();
+        this.store = new Store();
         this.button = new Button({
             title: '시작하기',
             style: 'main-game-start__button',
         });
     }
 
-    mount() {
+    mount(event) {
         const t = document.querySelector(".main-game-start__button");
         t.addEventListener('click', () => {
-            location.href = "#/game";
+            Router.moveToLocation('GamePage');
         });
     }
 

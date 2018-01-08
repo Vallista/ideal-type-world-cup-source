@@ -9,7 +9,7 @@ const Page = new PageManager();
 const PageRouter = new Router(Page);
 
 ////////////////////////////////////////////////////////////////////////
-// 라우터를 지정하는 곳 입니다.
+// 라우터 지정
 
 PageRouter.route('/', 'MainPage');
 PageRouter.route('/game', 'GamePage');

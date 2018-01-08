@@ -15,7 +15,7 @@ class ManButton extends Component {
         this.store = new Store();
     }
 
-    mount() {
+    mount(event) {
         const t = document.querySelector(".main-select-gender-man__button");
         t.addEventListener('click', () => {
             this.store.values.sex = 'man';

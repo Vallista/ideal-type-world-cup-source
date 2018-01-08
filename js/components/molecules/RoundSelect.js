@@ -9,13 +9,9 @@ class RoundSelect extends Component {
         super();
         this.select = new Select({
             options: [
-                '128강',
-                '64강',
-                '32강',
                 '16강',
                 '8강',
                 '4강',
-                '2강',
             ],
             style: 'main-round__select',
         });
@@ -27,7 +23,6 @@ class RoundSelect extends Component {
         const t = document.querySelector(".main-round__select");
         t.value = '16강';
         this.store.values.stage = parseInt(t.value.split('강')[0]);
-        this.store.values.displayStage = parseInt(t.value.split('강')[0]);
 
         t.addEventListener('change', (event) => {
             this.store.values.stage = parseInt(event.target.value.split('강')[0]);

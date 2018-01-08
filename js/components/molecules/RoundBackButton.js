@@ -15,7 +15,7 @@ class RoundBackButton extends Component {
         this.store = new Store();
     }
 
-    mount() {
+    mount(event) {
         const t = document.querySelector(".game-round-back__button");
         t.addEventListener('click', () => {
             if(this.store.values.currentRound > 0)

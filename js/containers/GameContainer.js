@@ -4,6 +4,11 @@ import Container from './../lib/Container';
 import Store from './../Store';
 import { man_group, woman_group } from './../components/assets/Characters';
 
+/* 게임 컨테이너,
+ * 컨테이너는 데이터를 만들고, 데이터를 각각의 템플릿에 넣어줌
+ * 현재 컨테이너는 게임 컨테이너로써 게임 데이터를 넣어줌
+ * 넣는 데이터는 트리 구조 (이상형 월드컵)
+ * 비즈니스 로직을 분리 하는 겸 해서 컨테이너로 짯음. */
 class GameContainer extends Container {
     constructor() {
         super();
@@ -11,51 +16,58 @@ class GameContainer extends Container {
         this.store = new Store();
         this.tree = new Tree();
 
+        // 함수 바인딩
         this.next = this.next.bind(this);
-        this.choiceCharacter = this.choiceCharacter.bind(this);
         this.showNowCard = this.showNowCard.bind(this);
         this.selectNode = this.selectNode.bind(this);
+        this.resultNode = this.resultNode.bind(this);
     }
 
+    /* 선택시 다음으로 데이터 옮김 */
     next() {
+        if(this.store.values.currentRound === 1 && (this.store.values.displayStage / 2) === 1)
+            return true;
+
         this.store.values.currentRound ++;
 
-        const pos = (2 * (this.store.values.currentStage));
-        const maxRound = (this.store.values.stage / pos);
-        if(this.store.values.currentRound > maxRound) {
+        if(this.store.values.currentRound > this.store.values.displayStage / 2) {
             this.store.values.currentRound = 1;
             this.store.values.currentStage++;
             this.store.values.displayStage = this.store.values.displayStage / 2;
         }
+
+        return false;
     }
 
-    choiceCharacter(value) {
-        if(value === 'left') {
-
-        }
-        else {
-
-        }
-    }
-
+    /* 게임 초기화 */
     initializeGame() {
         this.store.values.currentStage = 1;
         this.store.values.currentRound = 1;
+        this.store.values.displayStage = this.store.values.stage;
 
         this.tree.init(this.store.values.sex === 'man' ? man_group : woman_group);
     }
 
+    /* 현재 카드 두장에 대한 이미지 정보 */
     showNowCard() {
         return this.tree.showNowCard();
     }
 
+    /* 카드 선택시 카드를 트리 배열에 저장 */
     selectNode(dir) {
         return this.tree.selectNode(dir);
     }
+
+    /* 최종 결과 출력 */
+    resultNode() {
+        return this.tree.resultNode();
+    }
 }
 
+/* 데이터 단위 */
 class Node {
     constructor({name, group, src}) {
+        // 데이터는 이미지 소스와 이름, 그룹에 대해 담고있음
         this.data = {
             src: src,
             name: name,
@@ -64,35 +76,53 @@ class Node {
     }
 }
 
+/* 트리 배열
+ * init(array) : array로 배열을 초기화 함, 그러면서 데이터를 랜더마이즈 하여 트리에 넣음
+ * randomizeImg() : 이미지를 섞음 (트리에 있는)
+ * selectNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 트리에 저장.
+ * showNowCard() : 현재 트리의 대결하는 두 개의 노드를 가져오는 함수
+ * resultNode() : 트리에서의 가장 최상단 최종 결과 노드를 가져오는 함수 */
 class Tree {
     constructor() {
+        // 처음 1차원 배열 데이터 받는 배열
         this.nodeArray = [];
+        // 최종 트리 구조를 구현하는 2차원 배열
         this.resultArray = [];
         this.store = new Store();
 
+        // 함수 바인딩
         this.randomizeImg = this.randomizeImg.bind(this);
         this.init = this.init.bind(this);
         this.selectNode = this.selectNode.bind(this);
         this.showNowCard = this.showNowCard.bind(this);
+        this.resultNode = this.resultNode.bind(this);
     }
 
+    /* 트리 초기화 */
     init(array) {
-        this.nodeArray = array.map((node) => {
-            return new Node({name: node.name, group: node.group, src: node.src});
-        });
-
+        // 이미지 배열을 받아서 처음 일차원 배열 데이터에 넣음.
+        this.nodeArray = array.map((node) => { return new Node({name: node.name, group: node.group, src: node.src}); });
+        // 이미지를 섞음
         this.randomizeImg();
-
+        // 이미지를 선택한 강 수 만큼 덜어냄
+        this.nodeArray = this.nodeArray.filter((node, index) => { return index < this.store.values.stage});
+        // 트리 배열에 처음 배열을 삽입
         this.resultArray = [this.nodeArray];
     }
 
+    /* 배열의 이미지들을 섞음, 이상형이 게임마다 대결을 다르게 함 */
     randomizeImg() {
         let ctr = this.nodeArray.length, temp, index;
 
+        // 루프를 끝까지 돌음
         while (ctr > 0) {
+            // 클로저로 같은 값 안나오도록 설정.
             (() => {
+                // 랜더마이즈
                 index = Math.floor(Math.random() * ctr);
+                // 루프 돌도록 카운터를 줄임
                 ctr--;
+                // 스왑
                 temp = this.nodeArray[ctr].data.src;
                 this.nodeArray[ctr].data.src = this.nodeArray[index].data.src;
                 this.nodeArray[index].data.src = temp;
@@ -100,21 +130,27 @@ class Tree {
         }
     }
 
+    /* 트리의 노드를 선택할 때 */
     selectNode(dir) {
-        if(this.resultArray[this.store.values.currentStage + 1] == null) this.resultArray.push([]);
+        // 현재 트리의 다음 추가 트리가 없으면 트리 배열을 생성함, 혹은 마지막 결승전이라 다음 배열을 만들 필요 없으면 거름
+        if(this.resultArray[this.store.values.currentStage + 1] == null
+            && this.store.values.displayStage / 2 !== 1) this.resultArray.push([]);
 
+        // x, y 값을 설정
         const x = (this.store.values.currentRound - 1) * 2;
         const y = this.store.values.currentStage - 1;
 
+        // 왼쪽을 선택시
         if(dir === 'left') {
             const pos = this.resultArray[y][x];
             this.resultArray[y + 1].push(pos);
-        } else {
+        } else { // 오른쪽 선택
             const pos = this.resultArray[y][x + 1];
             this.resultArray[y + 1].push(pos);
         }
     }
 
+    /* 현재 트리 노드의 데이터 (카드) 왼쪽 오른쪽 가져옴 */
     showNowCard() {
         const x = (this.store.values.currentRound - 1) * 2;
         const y = this.store.values.currentStage - 1;
@@ -123,6 +159,11 @@ class Tree {
             left: this.resultArray[y][x].data,
             right: this.resultArray[y][x + 1].data,
         };
+    }
+
+    /* 결과 노드값을 가져옴*/
+    resultNode() {
+        return this.resultArray[this.resultArray.length - 1][this.resultArray[this.resultArray.length - 1].length - 1];
     }
 }
 

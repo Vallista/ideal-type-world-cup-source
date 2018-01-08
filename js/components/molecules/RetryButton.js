@@ -2,33 +2,34 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
-import Store from "../../Store";
+import Store from "./../../Store";
+import Router from "../../route/Router";
 
-class WomanButton extends Component {
+class RetryButton extends Component {
     constructor() {
         super();
         this.button = new Button({
-            title: '여자',
-            style: 'main-select-gender-woman__button',
+            title: '다시하기',
+            style: 'result-retry__button',
         });
 
         this.store = new Store();
     }
 
     mount(event) {
-        const t = document.querySelector(".main-select-gender-woman__button");
+        const t = document.querySelector(".result-retry__button");
         t.addEventListener('click', () => {
-            this.store.values.sex = 'man';
+            Router.moveToLocation('GamePage');
         });
     }
 
     render() {
         return `
-            <div class="main-select-gender-woman-wrapper">
+            <div class="result-retry-wrapper">
                 ${this.button.render()}
             </div>
         `;
     }
 }
 
-export default WomanButton;
+export default RetryButton;

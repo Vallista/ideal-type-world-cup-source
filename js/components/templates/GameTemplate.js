@@ -19,7 +19,7 @@ class GameTemplate extends Component {
     render() {
         return `
             ${this.header.render()}
-            <div class="game-template flex-container flex-center-sort flex-column">
+            <div class="game-template flex-container flex-center-sort flex-row">
                 ${this.contents.render()}
             </div>
         `;

@@ -1,34 +1,35 @@
 'use strict';
 
 import Component from './../../lib/Component';
+import Store from './../../Store';
 import Button from './../atoms/Button';
-import Store from "../../Store";
+import Router from './../../route/Router';
 
-class WomanButton extends Component {
+class GotoHomeButton extends Component {
     constructor() {
         super();
         this.button = new Button({
-            title: '여자',
-            style: 'main-select-gender-woman__button',
+            title: '처음으로',
+            style: 'result-go-to-home__button',
         });
 
         this.store = new Store();
     }
 
     mount(event) {
-        const t = document.querySelector(".main-select-gender-woman__button");
+        const t = document.querySelector(".result-go-to-home__button");
         t.addEventListener('click', () => {
-            this.store.values.sex = 'man';
+            Router.moveToLocation('MainPage');
         });
     }
 
     render() {
         return `
-            <div class="main-select-gender-woman-wrapper">
+            <div class="result-go-to-home-wrapper">
                 ${this.button.render()}
             </div>
         `;
     }
 }
 
-export default WomanButton;
+export default GotoHomeButton;

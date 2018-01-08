@@ -6,6 +6,7 @@ import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
 import Store from './../../Store';
+import Router from "./../../route/Router";
 
 class IdealTypeCard extends Component {
     constructor(position) {
@@ -32,9 +33,11 @@ class IdealTypeCard extends Component {
         // 엘리먼트 쿼리 셀렉팅
         this.button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
         this.name = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__text");
+
         // 처음 한번 이미지 리로드
         this.changeSrc(event.showNowCard);
 
+        // 이벤트 등록
         this.button.addEventListener('click', () => {
             // 클릭 이벤트 시
 
@@ -42,7 +45,11 @@ class IdealTypeCard extends Component {
             event.selectNode(this.position);
 
             // 인덱스들을 증가 (스테이지 번호 증가)
-            event.next();
+            if(event.next() === true) {
+                this.store.result.node = event.resultNode();
+                Router.moveToLocation('ResultPage');
+                return;
+            }
 
             // 타이틀을 변경함.
             event.titleEvent();

@@ -9,14 +9,15 @@ class GamePage extends Component {
         super();
         this.template = new Template();
         this.container = new Container();
-
-        this.container.initializeGame();
     }
 
     mount(event) {
+        this.container.initializeGame();
+
         event.next = this.container.next;
         event.showNowCard = this.container.showNowCard;
         event.selectNode = this.container.selectNode;
+        event.resultNode = this.container.resultNode;
         this.template.mount(event);
     }
 

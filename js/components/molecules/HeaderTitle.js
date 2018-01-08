@@ -17,6 +17,7 @@ class HeaderTitle extends Component {
 
     mount(event) {
         event.titleEvent = this.titleEvent;
+        this.titleEvent();
     }
 
     titleEvent() {
@@ -24,9 +25,6 @@ class HeaderTitle extends Component {
         let stage = this.store.values.displayStage;
 
         switch(stage) {
-            case 128: stage = "128강"; break;
-            case 64: stage = "64강"; break;
-            case 32: stage = "32강"; break;
             case 16: stage = "16강"; break;
             case 8: stage = "8강"; break;
             case 4: stage = "4강"; break;
