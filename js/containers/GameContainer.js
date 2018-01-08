@@ -111,8 +111,11 @@ class Node {
 
 /* 트리 배열
  * init(array) : array로 배열을 초기화 함, 그러면서 데이터를 랜더마이즈 하여 트리에 넣음
- * randomizeImg() : 이미지를 섞음 (트리에 있는)
- * addNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 트리에 저장.
+ * randomize() : 배열을 섞음
+ * addNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 트리에 저장하고 다음 노드리스트를 생성
+ * addArrayNode(dir) : dir(방향)을 받아서 해당 방향에서 선택한 카드를 노드리스트에 저장
+ * removeNode() : 노드리스트를 삭제 (뒤부터)
+ * removeArrayNode() : 노드리스트의 노드를 삭제 (뒤부터)
  * showNowCard() : 현재 트리의 대결하는 두 개의 노드를 가져오는 함수
  * resultNode() : 트리에서의 가장 최상단 최종 결과 노드를 가져오는 함수 */
 class Tree {
@@ -124,7 +127,7 @@ class Tree {
         this.store = new Store();
 
         // 함수 바인딩
-        this.randomizeImg = this.randomizeImg.bind(this);
+        this.randomize = this.randomize.bind(this);
         this.init = this.init.bind(this);
         this.addNode = this.addNode.bind(this);
         this.addArrayNode = this.addArrayNode.bind(this);
@@ -139,7 +142,7 @@ class Tree {
         // 이미지 배열을 받아서 처음 일차원 배열 데이터에 넣음.
         this.nodeArray = array.map((node) => { return new Node({name: node.name, group: node.group, src: node.src}); });
         // 이미지를 섞음
-        this.randomizeImg();
+        this.randomize();
         // 이미지를 선택한 강 수 만큼 덜어냄
         this.nodeArray = this.nodeArray.filter((node, index) => { return index < this.store.values.stage});
         // 트리 배열에 처음 배열을 삽입
@@ -147,7 +150,7 @@ class Tree {
     }
 
     /* 배열의 이미지들을 섞음, 이상형이 게임마다 대결을 다르게 함 */
-    randomizeImg() {
+    randomize() {
         let ctr = this.nodeArray.length, temp, index;
 
         // 루프를 끝까지 돌음
@@ -159,14 +162,14 @@ class Tree {
                 // 루프 돌도록 카운터를 줄임
                 ctr--;
                 // 스왑
-                temp = this.nodeArray[ctr].data.src;
-                this.nodeArray[ctr].data.src = this.nodeArray[index].data.src;
-                this.nodeArray[index].data.src = temp;
+                temp = this.nodeArray[ctr];
+                this.nodeArray[ctr] = this.nodeArray[index];
+                this.nodeArray[index] = temp;
             })();
         }
     }
 
-    /* 트리의 노드를 선택할 때 */
+    /* 트리의 노드 리스트의 노드 등록 */
     addNode(dir) {
         // x, y 값을 설정
         const x = (this.store.values.currentRound - 1) * 2;
@@ -181,6 +184,7 @@ class Tree {
         if((this.store.values.displayStage / 2) !== 2) { this.resultArray.push([]); }
     }
 
+    /* 트리의 노드 등록*/
     addArrayNode(dir) {
         // x, y 값을 설정
         const x = (this.store.values.currentRound - 1) * 2;
@@ -194,11 +198,13 @@ class Tree {
         this.resultArray[y + 1].push(data);
     }
 
+    /* 트리의 노드를 삭제합니다 */
     removeNode() {
         if((this.store.values.displayStage / 2) !== 2) { this.resultArray.pop(); }
         this.removeArrayNode();
     }
 
+    /* 트리의 노드 리스트의 노드를 삭제합니다. */
     removeArrayNode() {
         const y = this.store.values.currentStage - 1;
 

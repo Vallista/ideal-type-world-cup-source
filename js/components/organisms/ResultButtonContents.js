@@ -20,8 +20,12 @@ class ResultButtonContents extends Component {
     render() {
         return `
             <div class="result-result-buttons-contents-wrapper flex-container flex-center-sort flex-row">
-                ${this.gotoHomeButton.render()}
-                ${this.retryButton.render()}
+                <div class="result-result-buttons-contents-button">
+                    ${this.gotoHomeButton.render()}
+                </div>
+                <div class="result-result-buttons-contents-button">
+                    ${this.retryButton.render()}
+                </div>
             </div>
         `;
     }

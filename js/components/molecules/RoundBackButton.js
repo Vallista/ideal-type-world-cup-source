@@ -8,7 +8,7 @@ class RoundBackButton extends Component {
     constructor() {
         super();
         this.button = new Button({
-            title: 'B',
+            title: '라운드 뒤로',
             style: 'game-round-back__button',
         });
 
