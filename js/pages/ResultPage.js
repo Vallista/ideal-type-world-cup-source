@@ -1,8 +1,8 @@
 'use strict';
 
-import Component from './../../lib/Component';
-import Template from './../../components/templates/ResultTemplate';
-import Store from './../../Store';
+import Component from '../lib/Component';
+import Template from '../components/templates/ResultTemplate';
+import Store from '../Storage';
 
 class ResultPage extends Component {
     constructor() {

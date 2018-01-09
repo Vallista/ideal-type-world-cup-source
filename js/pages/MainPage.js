@@ -1,8 +1,8 @@
 'use strict';
 
-import Component from './../../lib/Component';
-import Template from './../../components/templates/MainTemplate';
-import Store from './../../Store';
+import Component from '../lib/Component';
+import Template from '../components/templates/MainTemplate';
+import Store from '../Storage';
 
 class MainPage extends Component {
     constructor() {

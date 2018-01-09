@@ -1,7 +1,7 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Store from './../../Store';
+import Store from '../../Storage';
 import Title from './../atoms/Title';
 
 class ResultTitle extends Component {

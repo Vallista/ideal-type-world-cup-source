@@ -11,7 +11,7 @@ class P extends Component {
 
     render() {
         return `
-            <p class="${this.style} common__p">${this.text}</p>
+            <p class="${this.style} common__p">${ this.text }</p>
         `;
     }
 }

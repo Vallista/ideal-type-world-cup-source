@@ -2,8 +2,8 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
-import Store from "./../../Store";
-import Router from "../../route/Router";
+import Store from "../../Storage";
+import Router from "../../router/Router";
 
 class RetryButton extends Component {
     constructor() {

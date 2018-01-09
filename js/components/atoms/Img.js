@@ -3,7 +3,7 @@
 import Component from './../../lib/Component';
 
 class Img extends Component {
-    constructor({alt, style, src}) {
+    constructor({ alt, style, src }) {
         super();
         this.alt = alt;
         this.style = style;
@@ -12,7 +12,7 @@ class Img extends Component {
 
     render() {
         return `
-            <img alt="${this.alt}" class="${this.style} common__img" src="${this.src}" />
+            <img alt="${this.alt}" class="${this.style} common__img" src="${ this.src }" />
         `;
     }
 }

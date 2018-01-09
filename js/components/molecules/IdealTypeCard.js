@@ -5,7 +5,7 @@ import Img from './../atoms/Img';
 import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
-import Store from './../../Store';
+import Store from '../../Storage';
 
 class IdealTypeCard extends Component {
     constructor(position) {
@@ -41,7 +41,7 @@ class IdealTypeCard extends Component {
             // 클릭 이벤트 시
 
             // 인덱스들을 증가 (스테이지 번호 증가)
-            if(event.next(this.position) === true) {
+            if (event.next(this.position) === true) {
                 // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
                 event.resultLocation();
                 return;
@@ -59,7 +59,7 @@ class IdealTypeCard extends Component {
     }
 
     changeSrc(event) {
-        if(this.position === 'left') {
+        if (this.position === 'left') {
             this.button.src = event().left.src;
             this.name.innerHTML = `${event().left.name}`;
         } else {

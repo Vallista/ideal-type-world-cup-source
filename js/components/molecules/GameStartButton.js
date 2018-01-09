@@ -2,8 +2,8 @@
 
 import Component from './../../lib/Component';
 import Button from './../atoms/Button';
-import Router from "./../../route/Router";
-import Store from "./../../Store";
+import Router from "../../router/Router";
+import Store from "../../Storage";
 
 class GameStartButton extends Component {
     constructor() {

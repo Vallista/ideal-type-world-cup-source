@@ -1,12 +1,12 @@
 'use strict';
 
-var instance = null;
+let instance = null;
 
 /* Store
  * 전역 데이터를 가지고 있는 singleton javascript */
 class Store {
     constructor() {
-        if(!instance) {
+        if (!instance) {
             instance = this;
         }
 

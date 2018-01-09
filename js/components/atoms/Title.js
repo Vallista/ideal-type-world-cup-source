@@ -3,7 +3,7 @@
 import Component from './../../lib/Component';
 
 class Title extends Component {
-    constructor({title, style}) {
+    constructor({ title, style }) {
         super();
         this.title = title;
         this.style = style;

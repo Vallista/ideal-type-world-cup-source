@@ -1,9 +1,9 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Store from './../../Store';
+import Store from '../../Storage';
 import Button from './../atoms/Button';
-import Router from './../../route/Router';
+import Router from '../../router/Router';
 
 class GotoHomeButton extends Component {
     constructor() {

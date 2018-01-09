@@ -1,7 +1,7 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Store from './../../Store';
+import Store from '../../Storage';
 import Img from "./../atoms/Img";
 import P from "./../atoms/P";
 import testImg from './../assets/test2.jpg';

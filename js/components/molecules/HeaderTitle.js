@@ -2,7 +2,7 @@
 
 import Component from './../../lib/Component';
 import Title from './../atoms/Title';
-import Store from "./../../Store";
+import Store from "../../Storage";
 
 class HeaderTitle extends Component {
     constructor() {

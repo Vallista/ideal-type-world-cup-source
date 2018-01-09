@@ -3,7 +3,7 @@
 import Component from './../../lib/Component';
 
 class Button extends Component {
-    constructor({title, style}) {
+    constructor({ title, style }) {
         super();
         this.title = title;
         this.style = style;
@@ -11,7 +11,7 @@ class Button extends Component {
 
     render() {
         return `
-            <button class="${this.style} common__button">${this.title}</button>
+            <button class="${ this.style } common__button">${ this.title }</button>
         `;
     }
 }

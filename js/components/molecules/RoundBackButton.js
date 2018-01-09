@@ -2,7 +2,7 @@
 
 import Component from './../../lib/Component';
 import Button from "./../atoms/Button";
-import Store from "./../../Store";
+import Store from "../../Storage";
 
 class RoundBackButton extends Component {
     constructor() {

@@ -34,7 +34,7 @@ import woman_14 from './test2.jpg';
 import woman_15 from './test.jpg';
 import woman_16 from './test2.jpg';
 
-const man_group = [
+const manGroup = [
     { name: '1' , group: '정글고', src: man_1 },
     { name: '2' , group: '정글고', src: man_2 },
     { name: '3' , group: '정글고', src: man_3 },
@@ -53,7 +53,7 @@ const man_group = [
     { name: '16', group: '정글고', src: man_16 },
 ];
 
-const woman_group = [
+const womanGroup = [
     { name: '1' , group: '정글고', src: woman_1 },
     { name: '2' , group: '정글고', src: woman_2 },
     { name: '3' , group: '정글고', src: woman_3 },
@@ -72,4 +72,4 @@ const woman_group = [
     { name: '16', group: '정글고', src: woman_16 },
 ];
 
-export { man_group, woman_group }
+export { manGroup, womanGroup }

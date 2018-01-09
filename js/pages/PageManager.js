@@ -1,8 +1,8 @@
 'use strict';
 
-import MainPage from './MainPage/MainPage';
-import GamePage from './GamePage/GamePage';
-import ResultPage from './ResultPage/ResultPage';
+import MainPage from './MainPage';
+import GamePage from './GamePage';
+import ResultPage from './ResultPage';
 
 import Manager from './../lib/Manager';
 

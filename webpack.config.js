@@ -1,75 +1,78 @@
-var path = require('path');
+const path = require('path');
 
-var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var dir_js = path.resolve(__dirname, 'js');
-var dir_css = path.resolve(__dirname, 'sass');
-var dir_html = path.resolve(__dirname, 'html');
-var dir_build = path.resolve(__dirname, 'build');
+const dirJs = path.resolve(__dirname, 'js');
+const dirCss = path.resolve(__dirname, 'sass');
+const dirHtml = path.resolve(__dirname, 'html');
+const dirBuild = path.resolve(__dirname, 'build');
 
 module.exports = {
-    entry: path.resolve(dir_js, 'main.js'),
+    entry: path.resolve(dirJs, 'main.js'),
     output: {
-        path: dir_build,
-        filename: 'bundle.js'
+        path: dirBuild,
+        filename: 'bundle.js',
     },
     devServer: {
-        contentBase: dir_build,
+        contentBase: dirBuild,
     },
     module: {
         loaders: [
             {
-                test: dir_js,
+                test: dirJs,
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
                     cacheDirectory: true,
-                    presets: ['es2015']
-                }
+                    presets: ['es2015'],
+                },
+                use: [
+                    "eslint-loader",
+                ],
             },
             {   test: /(\.css$)/,
-                loader: ['style-loader', 'css-loader', 'postcss-loader']
+                loader: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000'
-            }
+                loader: 'url-loader?limit=100000',
+            },
         ],
         rules: [{
-            test: dir_css,
+            test: dirCss,
             use: [{
-                loader: "style-loader" // creates style nodes from JS strings
+                loader: "style-loader", // creates style nodes from JS strings
             }, {
-                loader: "css-loader" // translates CSS into CommonJS
+                loader: "css-loader", // translates CSS into CommonJS
             }, {
                 loader: "sass-loader", // compiles Sass to CSS
                 options: {
-                    includePaths: ["sass"]
-                }
-            }]
+                    includePaths: ["sass"],
+                },
+            }],
         },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
-                        options: {}
-                    }
+                        options: {},
+                    },
                 ]
-            }]
+            }],
     },
     plugins: [
         // Simply copies the files over
         new CopyWebpackPlugin([
-            { from: dir_html } // to: output.path
+            { from: dirHtml, }, // to: output.path
         ]),
         // Avoid publishing files when compilation fails
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
     ],
     stats: {
         // Nice colored output
-        colors: true
+        colors: true,
     },
     // Create Sourcemaps for the bundle
     devtool: 'source-map',

@@ -2,7 +2,7 @@
 
 import Component from './../../lib/Component';
 import Select from './../atoms/Select';
-import Store from "../../Store";
+import Store from "../../Storage";
 
 class RoundSelect extends Component {
     constructor() {
