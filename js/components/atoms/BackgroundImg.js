@@ -3,16 +3,17 @@
 import Component from './../../lib/Component';
 
 class BackgroundImg extends Component {
-    constructor() {
+    constructor({ src, style }) {
         super();
+        this.style = style;
+        this.src = src;
     }
 
     render() {
         return `
-            <div>
-                
-            </div>
-        `;
+          <div class=${this.style} backgroundImage="url(./${this.src})">
+          </div>
+      `;
     }
 }
 

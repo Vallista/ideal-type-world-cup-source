@@ -15,7 +15,7 @@ class RoundSelectBox extends Component {
 
     render() {
         return `
-            <div class="main-round-select__box flex-container flex-center-sort flex-row">
+            <div class="main-round-select__box flex-container flex-left flex-row">
                 ${this.roundSelect.render()}
             </div>
         `;

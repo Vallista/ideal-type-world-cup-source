@@ -34,10 +34,6 @@ module.exports = {
             {   test: /(\.css$)/,
                 loader: ['style-loader', 'css-loader', 'postcss-loader'],
             },
-            {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000',
-            },
         ],
         rules: [{
             test: dirCss,
@@ -57,7 +53,9 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader',
-                        options: {},
+                        options: {
+                            name: '[path][name].[ext]',
+                        },
                     },
                 ]
             }],

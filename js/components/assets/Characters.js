@@ -1,5 +1,8 @@
 'use strict';
 
+import home from './home.png';
+import back from './back.png';
+import logo from './dog.jpg';
 import man_1 from './test.jpg';
 import man_2 from './test2.jpg';
 import man_3 from './test.jpg';
@@ -72,4 +75,4 @@ const womanGroup = [
     { name: '16', group: '정글고', src: woman_16 },
 ];
 
-export { manGroup, womanGroup }
+export { manGroup, womanGroup, logo, back, home }

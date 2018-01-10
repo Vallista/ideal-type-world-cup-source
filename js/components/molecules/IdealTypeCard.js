@@ -1,7 +1,7 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Img from './../atoms/Img';
+import Img from './../atoms/BackgroundImg';
 import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
@@ -13,7 +13,6 @@ class IdealTypeCard extends Component {
         this.position = position;
         this.store = new Store();
         this.img = new Img({
-            alt: 'test',
             style: 'game-ideal-type-card' + '-' + this.position + '__button',
             src: testImg,
         });

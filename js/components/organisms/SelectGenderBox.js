@@ -20,7 +20,7 @@ class SelectGenderBox extends Component {
 
     render() {
         return `
-            <div class="main-select-gender__box flex-container flex-center-sort flex-row">
+            <div class="main-select-gender__box flex-container flex-left flex-row">
                 ${this.buttons.manButton.render()}
                 ${this.buttons.womanButton.render()}
             </div>

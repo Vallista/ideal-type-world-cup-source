@@ -26,7 +26,7 @@ class MainTemplate extends Component {
 
     render() {
         return `
-            <div class="main-template flex-container flex-center-sort flex-column">
+            <div class="main-template flex-container flex-left flex-column">
                 ${this.layout.TitleBox.render()}
                 ${this.layout.RoundSelectBox.render()}
                 ${this.layout.SelectGenderBox.render()}

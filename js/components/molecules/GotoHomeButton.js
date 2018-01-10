@@ -2,15 +2,17 @@
 
 import Component from './../../lib/Component';
 import Store from '../../Storage';
-import Button from './../atoms/Button';
 import Router from '../../router/Router';
+import { home } from './../assets/Characters';
+import ImageLogo from './../atoms/Img.js';
 
 class GotoHomeButton extends Component {
     constructor() {
         super();
-        this.button = new Button({
-            title: '처음으로',
+        this.button = new ImageLogo({
+            alt: 'home',
             style: 'result-go-to-home__button',
+            src: home,
         });
 
         this.store = new Store();

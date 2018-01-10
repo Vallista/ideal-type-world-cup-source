@@ -1,15 +1,17 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Button from "./../atoms/Button";
 import Store from "../../Storage";
+import { back } from './../assets/Characters';
+import ImageLogo from './../atoms/Img.js';
 
 class RoundBackButton extends Component {
     constructor() {
         super();
-        this.button = new Button({
-            title: '라운드 뒤로',
+        this.button = new ImageLogo({
+            alt: 'back',
             style: 'game-round-back__button',
+            src: back,
         });
 
         this.store = new Store();
