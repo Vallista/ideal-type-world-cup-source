@@ -21,7 +21,7 @@ class Store {
             // 현재 라운드
             currentRound: 1,
             // 성별
-            sex: 'man',
+            sex: 'woman',
         };
 
         // 결과 값 보존하는 데이터

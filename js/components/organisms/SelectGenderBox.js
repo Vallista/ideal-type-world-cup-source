@@ -20,6 +20,9 @@ class SelectGenderBox extends Component {
 
     render() {
         return `
+            <div class="flex-container flex-left flex-row">
+                <p class="main-select-question__text">너의 성별은 뭐야?</p>
+            </div>
             <div class="main-select-gender__box flex-container flex-left flex-row">
                 ${this.buttons.manButton.render()}
                 ${this.buttons.womanButton.render()}

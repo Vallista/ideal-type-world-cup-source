@@ -20,7 +20,7 @@ class RoundSelect extends Component {
     }
 
     mount() {
-        const t = document.querySelector(".main-round__select");
+        const t = document.querySelector('.main-round__select');
         t.value = this.store.values.stage + '강';
 
         t.addEventListener('change', (event) => {

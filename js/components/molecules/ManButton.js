@@ -34,10 +34,10 @@ class ManButton extends Component {
     mount(event) {
         event.manToggleOn = this.toggleOn;
         event.manToggleOff = this.toggleOff;
-        this.buttonEle = document.querySelector(".main-select-gender-man__button");
-        if (this.store.values.sex === 'man') this.toggleOn(); else this.toggleOff();
+        this.buttonEle = document.querySelector('.main-select-gender-man__button');
+        if (this.store.values.sex === 'woman') this.toggleOn(); else this.toggleOff();
         this.buttonEle.addEventListener('click', () => {
-            this.store.values.sex = 'man';
+            this.store.values.sex = 'woman';
             this.toggleOn();
             event.womanToggleOff();
         });
