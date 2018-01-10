@@ -16,7 +16,7 @@ class GameStartButton extends Component {
     }
 
     mount(event) {
-        const t = document.querySelector(".main-game-start__button");
+        const t = document.querySelector('.main-game-start__button');
         t.addEventListener('click', () => {
             Router.moveToLocation('GamePage');
         });

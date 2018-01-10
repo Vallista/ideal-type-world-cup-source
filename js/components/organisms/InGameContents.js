@@ -21,11 +21,11 @@ class InGameContents extends Component {
 
     render() {
         return `
-            <ul class="game-in-game__contents flex-container flex-space-between-sort zero">
-                <li class="li-inline game-in-game-contents__card">${this.leftIdealTypeCard.render()}</li>
-                <li class="li-inline game-in-game-contents__card">${this.rightIdealTypeCard.render()}</li>
+            <ul class="game-in-game__contents flex-container flex-center-sort flex-row">
+                <li class="game-in-game-contents__card flex-container flex-center-sort flex-row">${this.leftIdealTypeCard.render()}</li>
+                <li class="game-in-game-contents__card flex-container flex-center-sort flex-row">${this.rightIdealTypeCard.render()}</li>
             </ul>
-            <div class=""> ${this.versusImage.render()} </div>
+            ${this.versusImage.render()}
         `;
     }
 }

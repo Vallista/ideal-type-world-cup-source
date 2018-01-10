@@ -1,9 +1,10 @@
 'use strict';
 
-import vs from './vs.png';
 import home from './home.png';
 import back from './back.png';
 import logo from './dog.jpg';
+import trophy from './trophy.png';
+
 import man_1 from './man/1.png';
 import man_2 from './man/2.png';
 import man_3 from './man/3.png';
@@ -80,7 +81,7 @@ const etc = [
     { src: logo },
     { src: back },
     { src: home },
-    { src: vs },
+    { src: trophy },
 ];
 
 export { manGroup, womanGroup, etc };

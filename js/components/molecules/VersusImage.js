@@ -1,16 +1,14 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Image from './../atoms/Img';
-import { etc } from './../assets/Characters';
+import Image from './../atoms/Title';
 
 class VersusImage extends Component {
     constructor() {
         super();
-        this.image = new Image({
-            src: etc[3].src,
-            alt: 'vs',
+        this.vs = new Image({
             style: 'game-versus__image',
+            title: 'VS',
         });
     }
 
@@ -21,7 +19,7 @@ class VersusImage extends Component {
     render() {
         return `
             <div class="game-versus-wrapper">
-                ${this.image.render()}
+                ${this.vs.render()}
             </div>
         `;
     }

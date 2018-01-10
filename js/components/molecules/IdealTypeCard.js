@@ -82,14 +82,12 @@ class IdealTypeCard extends Component {
 
     render() {
         return `
-            <div class="game-ideal-type-card-wrapper">
-                <div class="modal-wrapper-${this.position}">
-                    <div class="p-wrapper-${this.position}">
-                        ${this.group.render()}
-                        ${this.name.render()}
-                    </div>
-                    ${this.modal.render()}
+            <div class="game-ideal-type-card-wrapper flex-container flex-center-sort flex-column">
+                <div class="p-wrapper-${this.position}">
+                    ${this.group.render()}
+                    ${this.name.render()}
                 </div>
+                <hr class="card-line" />
                 ${this.img.render()}
             </div>
         `;
