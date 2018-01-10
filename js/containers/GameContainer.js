@@ -43,6 +43,7 @@ class Tree {
         this.resultNode = this.resultNode.bind(this);
         this.removeNode = this.removeNode.bind(this);
         this.removeArrayNode = this.removeArrayNode.bind(this);
+        this.randomizeThisList = this.randomizeThisList.bind(this);
     }
 
     /* 트리 초기화 */
@@ -73,6 +74,25 @@ class Tree {
             temp = this.nodeArray[ctr];
             this.nodeArray[ctr] = this.nodeArray[index];
             this.nodeArray[index] = temp;
+        }
+    }
+
+    /* 현재 강의 데이터들을 섞습니다. */
+    randomizeThisList() {
+        let ctr = this.resultArray[this.store.values.currentStage].length;
+        let temp = null;
+        let index = null;
+
+        // 루프를 끝까지 돌음
+        while (ctr > 0) {
+            // 랜더마이즈
+            index = Math.floor(Math.random() * ctr);
+            // 루프 돌도록 카운터를 줄임
+            ctr -= 1;
+            // 스왑
+            temp = this.resultArray[this.store.values.currentStage][ctr];
+            this.resultArray[this.store.values.currentStage][ctr] = this.resultArray[this.store.values.currentStage][index];
+            this.resultArray[this.store.values.currentStage][index] = temp;
         }
     }
 
@@ -171,7 +191,9 @@ class GameContainer extends Container {
         if (this.store.values.currentRound > this.store.values.displayStage / 2) {
             this.tree.addNode(dir);
             this.store.values.currentRound = 1;
+            this.tree.randomizeThisList();
             this.store.values.currentStage += 1;
+            // 강 올라갈 때마다 트리 구성
             this.store.values.displayStage = this.store.values.displayStage / 2;
         }
 
@@ -223,9 +245,15 @@ class GameContainer extends Container {
         return this.tree.resultNode();
     }
 
+    /* 최종 트리 출력 */
+    resultTree() {
+        return this.tree.resultArray;
+    }
+
     /* 결과 페이지 이동 및 이벤트 */
     resultLocation() {
         this.store.result.node = this.resultCard();
+        this.store.result.tree = this.resultTree();
         Router.moveToLocation('ResultPage');
     }
 }

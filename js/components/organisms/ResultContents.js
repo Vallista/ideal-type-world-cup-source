@@ -19,7 +19,7 @@ class ResultContents extends Component {
 
     render() {
         return `
-            <div class="result-result-contents-wrapper flex-container flex-center-sort flex-column">
+            <div class="result-result-contents-wrapper flex-container flex-left flex-column">
                 ${this.resultTitle.render()}
                 ${this.resultCard.render()}
             </div>

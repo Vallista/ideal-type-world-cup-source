@@ -1,23 +1,107 @@
 .game-ideal-type-card-left__button
+  position: relative
   width: 100%
   height: 100%
   cursor: pointer
   background-position: center
   background-repeat: no-repeat
   background-size: cover
+  +border-radius(10px)
 
 .game-ideal-type-card-right__button
+  position: relative
   width: 100%
   height: 100%
   cursor: pointer
   background-position: center
   background-repeat: no-repeat
   background-size: cover
+  +border-radius(10px)
 
-.game-ideal-type-card-left__text
+.game-ideal-type-card-left__pText
+  position: relative
+  font-size: 1.5rem
+  color: #E42707 !important
+  padding-left: 20px
+  padding-top: 10px
+  margin: 0
 
-.game-ideal-type-card-right__text
+.game-ideal-type-card-right__pText
+  position: relative
+  font-size: 1.5rem
+  color: #E42707 !important
+  padding-left: 20px
+  padding-top: 10px
+  margin: 0
+
+.game-ideal-type-card-left__gText
+  position: relative
+  font-size: 1rem
+  color: #E42707 !important
+  padding-left: 20px
+  padding-top: 10px
+  margin: 0
+
+.game-ideal-type-card-right__gText
+  position: relative
+  font-size: 1rem
+  color: #E42707 !important
+  padding-left: 20px
+  padding-top: 10px
+  margin: 0
+
+.game-ideal-type-card-left__modal
+  position: relative
+  background-color: #ffffff
+  +border-radius(10px)
+  width: 100%
+  height: 100%
+
+.game-ideal-type-card-right__modal
+  position: relative
+  background-color: #ffffff
+  +border-radius(10px)
+  width: 100%
+  height: 100%
 
 .game-ideal-type-card-wrapper
-  width: 40vw
+  position: absolute
+  width: 45vw
   height: 800px
+  +margin-space(30px)
+  +border-radius(10px)
+  border: #ffffff solid 5px
+  background-color: #ffffff
+
+.modal-wrapper-left
+  width: 200px
+  height: 80px
+  position: absolute
+  z-index: 10
+  left: 0
+  bottom: 0
+  margin: 5px
+
+.modal-wrapper-right
+  width: 200px
+  height: 80px
+  position: absolute
+  z-index: 10
+  right: 0
+  bottom: 0
+  margin: 5px
+
+.p-wrapper-left
+  width: 100%
+  height: 100%
+  position: absolute
+  z-index: 20
+  text-align: left
+
+.p-wrapper-right
+  width: 100%
+  height: 100%
+  position: absolute
+  z-index: 20
+  text-align: right
+  margin-left: -20px

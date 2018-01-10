@@ -18,9 +18,13 @@ class ResultTemplate extends Component {
 
     render() {
         return `
-            <div class="result-template flex-container flex-center-sort flex-column">
-                ${this.resultContents.render()}
-                ${this.resultButtonsContents.render()}
+            <div class="result-template flex-container flex-center-sort flex-row">
+                <div class="result-left flex-container flex-center-sort flex-column">
+                    ${this.resultContents.render()}
+                </div>
+                <div class="result-right flex-container flex-center-sort flex-column">
+                    ${this.resultButtonsContents.render()}
+                </div>
             </div>
         `;
     }

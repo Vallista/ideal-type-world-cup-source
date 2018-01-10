@@ -8,7 +8,7 @@ class ResultButtonContents extends Component {
     constructor() {
         super();
 
-        this.gotoHomeButton = new GotoHomeButton();
+        this.gotoHomeButton = new GotoHomeButton('result');
         this.retryButton = new RetryButton();
     }
 

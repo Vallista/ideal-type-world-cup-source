@@ -11,19 +11,26 @@ class ResultTitle extends Component {
             title: '당신의 이상형은 : ',
             style: 'result__title',
         });
+        this.name = new Title({
+            title: '당신의 이상형은 : ',
+            style: 'result__title2',
+        });
         this.store = new Store();
     }
 
     mount(event) {
         const title = document.querySelector(".result__title");
-        this.title.title = `당신의 이상형은 : ${this.store.result.node.data.group}의 ${this.store.result.node.data.name}`;
+        const name = document.querySelector(".result__title2");
+        this.title.title = `최종 이상형`;
         title.innerHTML = this.title.render();
+        this.name.title = `${this.store.result.node.data.group}의 ${this.store.result.node.data.name}`;
+        name.innerHTML = this.name.render();
     }
 
     render() {
         return `
             <div class="result-title-wrapper">
-               ${this.title.render()}
+               ${this.title.render()} ${this.name.render()}
             </div>
         `;
     }

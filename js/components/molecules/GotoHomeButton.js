@@ -4,23 +4,37 @@ import Component from './../../lib/Component';
 import Store from '../../Storage';
 import Router from '../../router/Router';
 import { home } from './../assets/Characters';
-import ImageLogo from './../atoms/Img.js';
+import ImageLogo from './../atoms/Img';
+import Button from './../atoms/Button';
 
 class GotoHomeButton extends Component {
-    constructor() {
+    constructor(page) {
         super();
+        this.store = new Store();
+
+        this.page = page;
+
+        if(page === 'result') {
+            this.button = new Button({
+                title: '처음화면',
+                style: 'result-go-to-home__button',
+            });
+
+            return;
+        }
+
         this.button = new ImageLogo({
             alt: 'home',
-            style: 'result-go-to-home__button',
+            style: 'result-go-to-home__img',
             src: home,
         });
-
-        this.store = new Store();
     }
 
     mount(event) {
-        const t = document.querySelector(".result-go-to-home__button");
-        t.addEventListener('click', () => {
+        if(this.page === 'result') this.event = document.querySelector(".result-go-to-home__button");
+        else this.event = document.querySelector(".result-go-to-home__img");
+
+        this.event.addEventListener('click', () => {
             Router.moveToLocation('MainPage');
         });
     }

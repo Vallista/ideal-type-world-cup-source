@@ -46,7 +46,6 @@ class Router {
     }
 
     static moveToLocation(pageName) {
-        console.log(routeList);
         const page = Object.keys(routeList).find(key => routeList[key].locationId === pageName);
 
         if (page === undefined || page === null) {

@@ -27,6 +27,7 @@ class Store {
         // 결과 값 보존하는 데이터
         this.result = {
             node: null,
+            tree: null,
         };
 
         return instance;

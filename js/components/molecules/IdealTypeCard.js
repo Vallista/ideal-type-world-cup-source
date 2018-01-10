@@ -16,9 +16,18 @@ class IdealTypeCard extends Component {
             style: 'game-ideal-type-card' + '-' + this.position + '__button',
             src: testImg,
         });
-        this.p = new P({
+        this.modal = new Img({
+            style: 'game-ideal-type-card' + '-' + this.position + '__modal',
+        });
+
+        this.name = new P({
             text: 'text',
-            style: 'game-ideal-type-card' + '-' + this.position + '__text',
+            style: 'game-ideal-type-card' + '-' + this.position + '__pText',
+        });
+
+        this.group = new P({
+            text: 'text',
+            style: 'game-ideal-type-card' + '-' + this.position + '__gText',
         });
 
         this.changeSrc = this.changeSrc.bind(this);
@@ -30,7 +39,9 @@ class IdealTypeCard extends Component {
 
         // 엘리먼트 쿼리 셀렉팅
         this.button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
-        this.name = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__text");
+        this.modal = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__modal");
+        this.nameEle = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__pText");
+        this.groupEle = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__gText");
 
         // 처음 한번 이미지 리로드
         this.changeSrc(event.showNowCard);
@@ -60,18 +71,26 @@ class IdealTypeCard extends Component {
     changeSrc(event) {
         if (this.position === 'left') {
             this.button.style.backgroundImage = 'url(' + event().left.src + ')';
-            this.name.innerHTML = `${event().left.name}`;
+            this.nameEle.innerHTML = `${event().left.name}`;
+            this.groupEle.innerHTML = `${event().left.group}`;
         } else {
             this.button.style.backgroundImage = 'url(' + event().right.src + ')';
-            this.name.innerHTML = `${event().right.name}`;
+            this.nameEle.innerHTML = `${event().right.name}`;
+            this.groupEle.innerHTML = `${event().right.group}`;
         }
     }
 
     render() {
         return `
             <div class="game-ideal-type-card-wrapper">
+                <div class="modal-wrapper-${this.position}">
+                    <div class="p-wrapper-${this.position}">
+                        ${this.group.render()}
+                        ${this.name.render()}
+                    </div>
+                    ${this.modal.render()}
+                </div>
                 ${this.img.render()}
-                ${this.p.render()}
             </div>
         `;
     }
