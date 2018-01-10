@@ -18,7 +18,12 @@ class GameStartButton extends Component {
     mount(event) {
         const t = document.querySelector('.main-game-start__button');
         t.addEventListener('click', () => {
-            Router.moveToLocation('GamePage');
+            const template = document.querySelector('.main-template');
+            template.classList.add('fade_Out');
+            template.addEventListener('animationend', () => {
+                if (template.classList.contains('fade_In')) return;
+                Router.moveToLocation('GamePage');
+            });
         });
     }
 

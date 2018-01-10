@@ -6,6 +6,7 @@ import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
 import test from './../assets/test.jpg';
 import Store from '../../Storage';
+import Router from "../../router/Router";
 
 class IdealTypeCard extends Component {
     constructor(position) {
@@ -50,13 +51,31 @@ class IdealTypeCard extends Component {
         this.button.addEventListener('click', () => {
             // 클릭 이벤트 시
 
+            // 애니메이션
+            const template = document.querySelector('.game-in-game__contents');
+            template.classList.add('fade_Out_In');
+            template.addEventListener('animationend', () => {
+                if (template.classList.contains('fade_In') || template.classList.contains('fade_Out')) return;
+                this.clickChk = true;
+                template.classList.remove('fade_Out_In');
+            });
+
+            if (this.clickChk === false) { return; }
+
+            this.clickChk = false;
+
             // 인덱스들을 증가 (스테이지 번호 증가)
             if (event.next(this.position) === true) {
-                // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
-                event.resultLocation();
+                // 애니메이션
+                template.classList.remove('fade_Out_In');
+                template.classList.add('fade_Out');
+                template.addEventListener('animationend', () => {
+                    if (template.classList.contains('fade_In')) return;
+                    // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
+                    event.resultLocation();
+                });
                 return;
             }
-
             // 타이틀을 변경함.
             event.titleEvent();
 

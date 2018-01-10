@@ -17,9 +17,14 @@ class RetryButton extends Component {
     }
 
     mount(event) {
-        const t = document.querySelector(".result-retry__button");
+        const t = document.querySelector('.result-retry__button');
         t.addEventListener('click', () => {
-            Router.moveToLocation('GamePage');
+            const template = document.querySelector('.result-template');
+            template.classList.add('fade_Out');
+            template.addEventListener('animationend', () => {
+                if (template.classList.contains('fade_In')) return;
+                Router.moveToLocation('GamePage');
+            });
         });
     }
 

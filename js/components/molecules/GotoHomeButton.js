@@ -31,11 +31,16 @@ class GotoHomeButton extends Component {
     }
 
     mount(event) {
-        if(this.page === 'result') this.event = document.querySelector(".result-go-to-home__button");
+        if (this.page === 'result') this.event = document.querySelector(".result-go-to-home__button");
         else this.event = document.querySelector(".result-go-to-home__img");
 
         this.event.addEventListener('click', () => {
-            Router.moveToLocation('MainPage');
+            const template = (this.page === 'result') ? document.querySelector('.result-template') : document.querySelector('.game-template-wrapper');
+            template.classList.add('fade_Out');
+            template.addEventListener('animationend', () => {
+                if (template.classList.contains('fade_In')) return;
+                Router.moveToLocation('MainPage');
+            });
         });
     }
 

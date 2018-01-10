@@ -254,6 +254,7 @@ class GameContainer extends Container {
     resultLocation() {
         this.store.result.node = this.resultCard();
         this.store.result.tree = this.resultTree();
+
         Router.moveToLocation('ResultPage');
     }
 }

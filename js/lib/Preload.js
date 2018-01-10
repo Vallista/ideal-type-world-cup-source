@@ -22,10 +22,6 @@ const preload = (...srcs) => {
     for (let i = 0; i < srcs.length; i += 1) {
         images[i] = new Image();
         images[i].src = srcs[i];
-        const loadingMessage = document.querySelector('.loading__text');
-        let dot = '.';
-        for (let j = 0; j < i % 3; j += 1) { dot += '.'; }
-        loadingMessage.innerHTML = `Loading${dot}`;
     }
 };
 
