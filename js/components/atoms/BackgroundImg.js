@@ -11,7 +11,7 @@ class BackgroundImg extends Component {
 
     render() {
         return `
-          <div class=${this.style} backgroundImage="url(./${this.src})">
+          <div class=${this.style} style='background-image: url("${this.src}")'>
           </div>
       `;
     }

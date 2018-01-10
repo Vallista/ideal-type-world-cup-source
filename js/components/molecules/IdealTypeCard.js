@@ -59,10 +59,10 @@ class IdealTypeCard extends Component {
 
     changeSrc(event) {
         if (this.position === 'left') {
-            this.button.src = event().left.src;
+            this.button.style.backgroundImage = 'url(' + event().left.src + ')';
             this.name.innerHTML = `${event().left.name}`;
         } else {
-            this.button.src = event().right.src;
+            this.button.style.backgroundImage = 'url(' + event().right.src + ')';
             this.name.innerHTML = `${event().right.name}`;
         }
     }
