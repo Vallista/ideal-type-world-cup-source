@@ -54,7 +54,8 @@ class Router {
         }
 
         state.location = page;
-        location.href = '/#' + page;
+        location.href = ((location.href.split('/')[3] === '#') ? location.href : location.href) + page;
+        //
     }
 }
 
