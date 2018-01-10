@@ -38,10 +38,10 @@ class IdealTypeCard extends Component {
         this.position === 'left' ? event.leftChangeSrc = this.changeSrc : event.rightChangeSrc = this.changeSrc;
 
         // 엘리먼트 쿼리 셀렉팅
-        this.button = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__button");
-        this.modal = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__modal");
-        this.nameEle = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__pText");
-        this.groupEle = document.querySelector(".game-ideal-type-card" + '-' + this.position + "__gText");
+        this.button = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__button');
+        this.modal = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__modal');
+        this.nameEle = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__pText');
+        this.groupEle = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__gText');
 
         // 처음 한번 이미지 리로드
         this.changeSrc(event.showNowCard);

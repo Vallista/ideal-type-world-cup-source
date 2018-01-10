@@ -18,7 +18,7 @@ class RoundSelectBox extends Component {
             <div class="flex-container flex-left flex-row">
                 <p class="main-round-select__text">몇 강의 토너먼트를 진행할래?</p>
             </div>
-            <div class="main-round-select__box flex-container flex-left flex-row">
+            <div class="main-round-select__box flex-container flex-center-sort flex-row">
                 ${this.roundSelect.render()}
             </div>
         `;

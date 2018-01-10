@@ -2,18 +2,11 @@
 
 import Component from './../../lib/Component';
 import GameStartButton from './../molecules/GameStartButton';
-import { etc } from './../assets/Characters';
-import ImageLogo from './../atoms/Img';
 
 class GameStartBox extends Component {
     constructor() {
         super();
         this.gameStartButton = new GameStartButton();
-        this.imageLogo = new ImageLogo({
-            alt: 'dog',
-            style: 'main-game-logo__img',
-            src: etc[0].src,
-        });
     }
 
     mount(event) {
@@ -23,7 +16,7 @@ class GameStartBox extends Component {
     render() {
         return `
             <div class="main-game-start__box flex-container flex-center-sort flex-column">
-                ${this.imageLogo.render()}
+                <hr class="main-line" />
                 ${this.gameStartButton.render()}
             </div>
         `;

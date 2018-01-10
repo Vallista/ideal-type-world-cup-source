@@ -19,9 +19,9 @@ class ResultTitle extends Component {
     }
 
     mount(event) {
-        const title = document.querySelector(".result__title");
-        const name = document.querySelector(".result__title2");
-        this.title.title = `최종 이상형`;
+        const title = document.querySelector('.result__title');
+        const name = document.querySelector('.result__title2');
+        this.title.title = '최종 이상형';
         title.innerHTML = this.title.render();
         this.name.title = `${this.store.result.node.data.group}의 ${this.store.result.node.data.name}`;
         name.innerHTML = this.name.render();
