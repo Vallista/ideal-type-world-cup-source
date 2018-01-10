@@ -1,9 +1,9 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import Store from "../../Storage";
-import { back } from './../assets/Characters';
-import ImageLogo from './../atoms/Img.js';
+import Store from '../../Storage';
+import { etc } from './../assets/Characters';
+import ImageLogo from './../atoms/Img';
 
 class RoundBackButton extends Component {
     constructor() {
@@ -11,7 +11,7 @@ class RoundBackButton extends Component {
         this.button = new ImageLogo({
             alt: 'back',
             style: 'game-round-back__button',
-            src: back,
+            src: etc[1].src,
         });
 
         this.store = new Store();
@@ -19,7 +19,7 @@ class RoundBackButton extends Component {
 
     mount(event) {
         // 백 버튼 이미지 누를 시
-        const t = document.querySelector(".game-round-back__button");
+        const t = document.querySelector('.game-round-back__button');
 
         // 백 버튼 클릭 이벤트 리스너
         t.addEventListener('click', () => {

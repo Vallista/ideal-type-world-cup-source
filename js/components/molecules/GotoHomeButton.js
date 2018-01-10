@@ -3,7 +3,7 @@
 import Component from './../../lib/Component';
 import Store from '../../Storage';
 import Router from '../../router/Router';
-import { home } from './../assets/Characters';
+import { etc } from './../assets/Characters';
 import ImageLogo from './../atoms/Img';
 import Button from './../atoms/Button';
 
@@ -26,7 +26,7 @@ class GotoHomeButton extends Component {
         this.button = new ImageLogo({
             alt: 'home',
             style: 'result-go-to-home__img',
-            src: home,
+            src: etc[2].src,
         });
     }
 

@@ -2,13 +2,13 @@
 
 import Component from './../../lib/Component';
 import Image from './../atoms/Img';
-import { vs } from './../assets/Characters';
+import { etc } from './../assets/Characters';
 
 class VersusImage extends Component {
     constructor() {
         super();
         this.image = new Image({
-            src: vs,
+            src: etc[3].src,
             alt: 'vs',
             style: 'game-versus__image',
         });

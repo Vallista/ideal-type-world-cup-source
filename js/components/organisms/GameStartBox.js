@@ -2,8 +2,8 @@
 
 import Component from './../../lib/Component';
 import GameStartButton from './../molecules/GameStartButton';
-import { logo } from './../assets/Characters';
-import ImageLogo from './../atoms/Img.js';
+import { etc } from './../assets/Characters';
+import ImageLogo from './../atoms/Img';
 
 class GameStartBox extends Component {
     constructor() {
@@ -12,7 +12,7 @@ class GameStartBox extends Component {
         this.imageLogo = new ImageLogo({
             alt: 'dog',
             style: 'main-game-logo__img',
-            src: logo,
+            src: etc[0].src,
         });
     }
 

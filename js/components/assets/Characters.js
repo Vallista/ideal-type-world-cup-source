@@ -76,4 +76,11 @@ const womanGroup = [
     { name: '은가람', group: '히어로 왈츠', src: woman_16 },
 ];
 
-export { manGroup, womanGroup, logo, back, home, vs }
+const etc = [
+    { src: logo },
+    { src: back },
+    { src: home },
+    { src: vs },
+];
+
+export { manGroup, womanGroup, etc };
