@@ -21,8 +21,7 @@ class RoundSelect extends Component {
 
     mount() {
         const t = document.querySelector(".main-round__select");
-        t.value = '16강';
-        this.store.values.stage = parseInt(t.value.split('강')[0]);
+        t.value = this.store.values.stage + '강';
 
         t.addEventListener('change', (event) => {
             this.store.values.stage = parseInt(event.target.value.split('강')[0]);

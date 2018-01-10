@@ -35,7 +35,7 @@ class WomanButton extends Component {
         event.womanToggleOn = this.toggleOn;
         event.womanToggleOff = this.toggleOff;
         this.buttonEle = document.querySelector(".main-select-gender-woman__button");
-        this.toggleOff();
+        if (this.store.values.sex === 'woman') this.toggleOn(); else this.toggleOff();
         this.buttonEle.addEventListener('click', () => {
             this.store.values.sex = 'woman';
             this.toggleOn();
