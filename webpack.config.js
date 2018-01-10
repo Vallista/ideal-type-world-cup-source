@@ -28,37 +28,38 @@ module.exports = {
                     presets: ['es2015'],
                 },
                 use: [
-                    "eslint-loader",
+                    'eslint-loader',
                 ],
             },
-            {   test: /(\.css$)/,
+            {
+                test: /(\.css$)/,
                 loader: ['style-loader', 'css-loader', 'postcss-loader'],
             },
         ],
         rules: [{
             test: dirCss,
             use: [{
-                loader: "style-loader", // creates style nodes from JS strings
+                loader: 'style-loader', // creates style nodes from JS strings
             }, {
-                loader: "css-loader", // translates CSS into CommonJS
+                loader: 'css-loader', // translates CSS into CommonJS
             }, {
-                loader: "sass-loader", // compiles Sass to CSS
+                loader: 'sass-loader', // compiles Sass to CSS
                 options: {
-                    includePaths: ["sass"],
+                    includePaths: ['sass'],
                 },
             }],
         },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'images/',
-                        },
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'images/',
                     },
-                ]
-            }],
+                },
+            ],
+        }],
     },
     plugins: [
         // Simply copies the files over
