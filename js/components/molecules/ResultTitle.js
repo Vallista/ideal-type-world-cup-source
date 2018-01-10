@@ -29,7 +29,7 @@ class ResultTitle extends Component {
 
     render() {
         return `
-            <div class="result-title-wrapper">
+            <div class="result-title-wrapper flex-container flex-center-sort flex-column">
                ${this.title.render()} ${this.name.render()}
             </div>
         `;

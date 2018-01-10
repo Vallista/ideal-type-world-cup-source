@@ -31,7 +31,7 @@ class ResultCard extends Component {
 
     render() {
         return `
-            <div class="result-result-card-wrapper">
+            <div class="result-result-card-wrapper flex-container flex-center-sort flex-row">
                 ${this.img.render()}
             </div>
         `;

@@ -2,12 +2,29 @@
   color: #fff
 
 .common__button
-  background-color: #fff
   width: 100%
   height: 100%
-  color: #E42707
-  border: none
+  color: #ffffff
+  border: #ffffff solid 1px
   +border-radius(60px)
+
+.common__button:hover
+  animation: buttonHover 0.5s both
+  color: #E42707
+  border: #E42707 solid 1px
+  +border-radius(60px)
+
+@keyframes buttonHover
+  0%
+    background-color: transparent
+  100%
+    background-color: #ffffff
+
+@keyframes buttonOut
+  0%
+    background-color: #ffffff
+  100%
+    background-color: transparent
 
 .common__button:active
   background-color: #337ab7

@@ -101,7 +101,7 @@ class IdealTypeCard extends Component {
 
     render() {
         return `
-            <div class="game-ideal-type-card-wrapper flex-container flex-center-sort flex-column">
+            <div class="game-ideal-type-card-${this.position}-wrapper flex-container flex-center-sort flex-column">
                 <div class="p-wrapper-${this.position}">
                     ${this.group.render()}
                     ${this.name.render()}

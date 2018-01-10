@@ -68,12 +68,33 @@
   width: 100%
   height: 100%
 
-.game-ideal-type-card-wrapper
+.game-ideal-type-card-left-wrapper
   width: 600px
   height: 750px
   +border-radius(10px)
   border: #ffffff solid 5px
   background-color: #ffffff
+  animation: moveDown 0.1s both
+
+.game-ideal-type-card-right-wrapper
+  width: 600px
+  height: 750px
+  +border-radius(10px)
+  border: #ffffff solid 5px
+  background-color: #ffffff
+  animation: moveDown 0.1s both
+
+.game-ideal-type-card-left-wrapper:hover
+  animation: moveUp 0.1s both
+
+.game-ideal-type-card-right-wrapper:hover
+  animation: moveUp 0.1s both
+
+.game-ideal-type-card-left-wrapper:hover
+  animation: moveUp 0.1s both
+
+.game-ideal-type-card-right-wrapper:hover
+  animation: moveUp 0.1s both
 
 .modal-wrapper-left
   width: 200px
