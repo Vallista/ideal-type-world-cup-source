@@ -1,19 +1,19 @@
-## 아이돌 월드컵
+# 아이돌 월드컵
 
 해당 프로젝트의 데모는 [아이돌 월드컵 데모](vallista.github.io/ideal-type-world-cup/)에서 확인하실 수 있습니다.
 
-### 설치
+## 설치
     $ git clone https://github.com/Vallista/ideal-type-world-cup-source.git
     $ cd ideal-type-world-cup-source
     $ npm install
     $ npm run start
 
-### 명령어
+## 명령어
     $ npm run start
     $ npm run build
 
-### 사용중인 모듈
-#### [Webpack](https://webpack.github.io/)
+## 사용중인 모듈
+### [Webpack](https://webpack.github.io/)
 
 웹팩을 사용하여 css, sass, image, js 등을 build 하여 데모 버전에서 돌리고 있으며, 개발시에는 webpack-dev-server를 사용하여 개발 버전 빌드를 하고 있습니다.
 
@@ -24,7 +24,7 @@
 - [sass-loader](https://github.com/webpack-contrib/sass-loader) (sass를 웹팩에서 번들링 해주는 모듈) [node-sass](https://github.com/sass/node-sass) (node에서 sass 바인딩 해주는 모듈)
 - [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 개발 단계일때 로컬 웹서버를 웹팩을 사용하여 워킹 시켜주는 모듈
 
-#### [Babel](https://babeljs.io/)
+### [Babel](https://babeljs.io/)
 
 ES6 (ECMA Script 2015) 기준으로 프로그래밍을 하기위해서 Babel을 사용하여 trans-compiling을 합니다.
 
@@ -33,7 +33,7 @@ ES6 (ECMA Script 2015) 기준으로 프로그래밍을 하기위해서 Babel을 
 - [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) babel의 row 브라우저 지원 polyfill 입니다.
 - [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015) babel의 es2015 프리셋입니다.
 
-#### [ESLint](https://eslint.org)
+### [ESLint](https://eslint.org)
 
 코드를 작성할 때 코드 컨벤션이 다양하게 존재하는데, 그 중에서 추천하는 것들을 모아놓은 것이 Lint 입니다. ES는 ECMA Script 의 약자로써, ES 표준을 사용할 때 Lint를 통해서 코드 스타일을 사람들과 협업할 때도 일정하게 유지하고자 사용하는 모듈입니다.
 
@@ -45,13 +45,13 @@ ES6 (ECMA Script 2015) 기준으로 프로그래밍을 하기위해서 Babel을 
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 
 
-### 프로젝트
+## 프로젝트
 
 - Javascript ES6
 - Pure DOM Rendering
 - CSS (SASS)
 
-#### 프로젝트 폴더 스트럭쳐
+### 프로젝트 폴더 스트럭쳐
 
 ```
 ideal-type-world-cup-source/
@@ -75,33 +75,33 @@ ideal-type-world-cup-source/
     └── main.sass
 ```
 
-##### js/router
+#### js/router
 
 SPA 프로젝트를 만들기 위해서 해쉬 라우터가 필요하여 해쉬 라우터를 제작했습니다.
 hash string을 읽은 후, 해당 로케이션으로 이동시켜줍니다.
 
-##### js/Storage.js
+#### js/Storage.js
 
 Singleton Pattern으로 구현한 Storage 입니다.
 씬 전환시에도 데이터를 유지하고자 만들었습니다.
 
-##### js/lib
+#### js/lib
 
 이미지 로딩 및 인터페이스 클래스들을 모아둔 폴더 입니다.
 
-##### js/components
+#### js/components
 
 Atomic Design을 사용한 javascript 관련 폴더입니다.
 
-##### js/pages
+#### js/pages
 
 아래에서 Atomic에 묶어서 같이 설명합니다.
 
-##### js/containers
+#### js/containers
 
 비즈니스 로직이 들어있는 containers 입니다.
 
-##### SASS
+#### SASS
 
 SASS는 기본적으로 많이 쓰이는 구조를 모방하여 사용하였습니다.
 
@@ -113,7 +113,7 @@ Grid System 등을 미리 만들어 놓아서, (flexbox를 사용하였습니다
 
 CSS Naming은 [BEM(Block Element Modifier)](http://getbem.com/) 를 사용하였습니다.
 
-##### Atomic Design - Javascript view components
+#### Atomic Design - Javascript view components
 
 View 레이어의 소스코드를 작성할 때 효과적으로 코딩을 할 수 있는 방법론 중 하나입니다.
 
