@@ -29,12 +29,12 @@ class IdealTypeCard extends Component {
             style: 'game-ideal-type-card' + '-' + this.position + '__gText',
         });
 
-        this.changeScene = false;
         this.changeSrc = this.changeSrc.bind(this);
     }
 
     mount(event) {
         this.clickChk = true;
+        this.changeScene = false;
         // 아밴트 등록 (반대쪽이 눌려도 변경하도록)
         this.position === 'left' ? event.leftChangeSrc = this.changeSrc : event.rightChangeSrc = this.changeSrc;
 
@@ -48,6 +48,7 @@ class IdealTypeCard extends Component {
 
         // 이벤트 등록
         this.button.addEventListener('click', () => {
+            if (this.changeScene === true) { return; }
             // 클릭 이벤트 시
 
             // 애니메이션
@@ -69,13 +70,12 @@ class IdealTypeCard extends Component {
                 template.classList.remove('fade_Out_In');
                 template.classList.add('fade_Out');
                 template.addEventListener('animationend', () => {
-                    if (template.classList.contains('fade_In')) return;
+                    // if (template.classList.contains('fade_In')) return;
                     // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
-                    if (this.changeScene === false)
-                        event.resultLocation();
-
-                    this.changeScene = true;
+                    event.resultLocation();
                 });
+
+                this.changeScene = true;
                 return;
             }
             // 타이틀을 변경함.

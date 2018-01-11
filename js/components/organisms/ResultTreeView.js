@@ -1,11 +1,11 @@
 'use strict';
 
 import Component from './../../lib/Component';
-import TreeNode from './../molecules/TreeNode';
 import Store from './../../Storage';
 import GotoHomeButton from './../molecules/GotoHomeButton';
 import RetryButton from './../molecules/RetryButton';
 import BackButton from './../molecules/ResultBackButton';
+import ResultColorInfo from '../molecules/ResultColorInfo';
 
 class ResultTreeView extends Component {
     constructor() {
@@ -17,6 +17,7 @@ class ResultTreeView extends Component {
         this.goToHomeButton = new GotoHomeButton('result');
         this.retryButton = new RetryButton();
         this.backButton = new BackButton();
+        this.resultColorInfo = new ResultColorInfo();
     }
 
     mount(event) {
@@ -69,11 +70,13 @@ class ResultTreeView extends Component {
 
         this.treeViewElem = document.querySelector('.result-tree-view');
         this.treeViewElem.innerHTML = stringAttribute;
+        this.resultColorInfo.mount(event);
     }
 
     render() {
         return `
             <div class="result-tree-view-wrapper flex-container flex-center-sort flex-column">
+                ${this.resultColorInfo.render()}
                 <div class="result-tree-view flex-container flex-center-sort flex-column"></div>
                 <div class="result-button-view flex-container flex-center-sort flex-row">
                     ${this.backButton.render()}
