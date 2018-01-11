@@ -1,6 +1,6 @@
 # 아이돌 월드컵
 
-해당 프로젝트의 데모는 [아이돌 월드컵 데모](vallista.github.io/ideal-type-world-cup/)에서 확인하실 수 있습니다.
+해당 프로젝트의 데모는 [아이돌 월드컵 데모](https://vallista.github.io/ideal-type-world-cup/)에서 확인하실 수 있습니다.
 
 ## 설치
     $ git clone https://github.com/Vallista/ideal-type-world-cup-source.git
