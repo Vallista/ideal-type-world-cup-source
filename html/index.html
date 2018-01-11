@@ -4,10 +4,23 @@
     <meta charset="utf-8">
     <title>ideal type world cup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <style type="text/css">
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div id="view"> <div style="color: #ffffff; font-size: 3rem; font-weight: 800; letter-spacing: 2px; display: flex; height: 100%;
-                        justify-content: center; align-content: center; align-items: center;">Loading...</div>
+    <div id="view"> <div style="display: flex; width: 100%; height: 100%; justify-content: center; align-content: center; align-items: center;">
+        <div style="border: 16px solid #f3f3f3;
+                    border-top: 16px solid #3498db; /* Blue */
+                    border-radius: 50%;
+                    width: 120px;
+                    height: 120px;
+                    animation: spin 2s linear infinite;
+                    "></div>
+    </div>
     </div>
     <script src="bundle.js"></script>
 </body>

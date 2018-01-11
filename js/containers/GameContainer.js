@@ -110,7 +110,7 @@ class Tree {
         if (dir === 'right') {
             data = this.resultArray[y][x - 1];
         }
-        
+
         if (this.store.values.displayStage / 2 !== 1) {
             this.resultArray[y + 1].push(data);
         } else {
