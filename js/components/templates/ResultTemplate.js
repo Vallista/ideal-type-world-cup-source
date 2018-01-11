@@ -2,7 +2,6 @@
 
 import Component from './../../lib/Component';
 import ResultContents from './../organisms/ResultContents';
-import ResultButtonContents from './../organisms/ResultButtonContents';
 import { etc } from './../assets/Characters';
 import ImageLogo from './../atoms/Img';
 import ResultTreeView from './../organisms/ResultTreeView';
@@ -11,7 +10,6 @@ class ResultTemplate extends Component {
     constructor() {
         super();
         this.resultContents = new ResultContents();
-        this.resultButtonsContents = new ResultButtonContents();
         this.imageLogo = new ImageLogo({
             alt: 'dog',
             style: 'main-game-logo__img',
@@ -22,17 +20,15 @@ class ResultTemplate extends Component {
 
     mount(event) {
         this.resultContents.mount(event);
-        this.resultButtonsContents.mount(event);
         this.resultTreeView.mount(event);
     }
 
     render() {
+            // ${this.resultTreeView.render()}
         return `
             ${this.imageLogo.render()}
             <div class="result-template flex-container flex-center-sort flex-column">
                 ${this.resultContents.render()}
-                ${this.resultButtonsContents.render()}
-                ${this.resultTreeView.render()}
             </div>
         `;
     }
