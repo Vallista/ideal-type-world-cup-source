@@ -107,8 +107,13 @@ class Tree {
         // 오른쪽 선택
         if (dir === 'right') data = this.resultArray[y][x - 1];
 
-        this.resultArray[y + 1].push(data);
-        if ((this.store.values.displayStage / 2) !== 2) { this.resultArray.push([]); }
+        if (this.store.values.displayStage / 2 !== 1) {
+            this.resultArray[y + 1].push(data);
+        } else {
+            this.resultArray[y + 1].push(this.resultArray[y][dir === 'right' ? 1 : 0]);
+        }
+
+        if ((this.store.values.displayStage / 2) !== 1) { this.resultArray.push([]); }
     }
 
     /* 트리의 노드 등록 */
@@ -179,16 +184,19 @@ class GameContainer extends Container {
      * false : 게임 진행중 */
     next(dir) {
         if (this.store.values.currentRound === 1 && (this.store.values.displayStage / 2) === 1) {
+            this.tree.addNode(dir);
             return true;
         }
 
         if (this.store.values.currentRound < this.store.values.displayStage / 2) {
+            // console.log('1');
             this.tree.addArrayNode(dir);
         }
 
         this.store.values.currentRound += 1;
 
         if (this.store.values.currentRound > this.store.values.displayStage / 2) {
+            // console.log('2');
             this.tree.addNode(dir);
             this.store.values.currentRound = 1;
             this.tree.randomizeThisList();
@@ -204,7 +212,7 @@ class GameContainer extends Container {
     back() {
         // 현재 진행 회차가 1회를 넘어야 이벤트 활성 (처음)
         if (this.store.values.currentRound === 1 && this.store.values.currentStage === 1) {
-            return;
+            return false;
         }
 
         // 현재 라운드 전으로 되돌림
@@ -224,6 +232,8 @@ class GameContainer extends Container {
             // 트리 노드 삭제
             this.tree.removeArrayNode();
         }
+
+        return true;
     }
 
     /* 게임 초기화 */

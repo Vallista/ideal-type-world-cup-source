@@ -11,6 +11,7 @@ class ResultButtonContents extends Component {
     }
 
     mount(event) {
+        this.nextButton.mount(event);
     }
 
     render() {

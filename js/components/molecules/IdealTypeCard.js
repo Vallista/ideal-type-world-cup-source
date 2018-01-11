@@ -4,9 +4,7 @@ import Component from './../../lib/Component';
 import Img from './../atoms/BackgroundImg';
 import P from './../atoms/P';
 import testImg from './../assets/test2.jpg';
-import test from './../assets/test.jpg';
 import Store from '../../Storage';
-import Router from "../../router/Router";
 
 class IdealTypeCard extends Component {
     constructor(position) {
@@ -31,16 +29,17 @@ class IdealTypeCard extends Component {
             style: 'game-ideal-type-card' + '-' + this.position + '__gText',
         });
 
+        this.changeScene = false;
         this.changeSrc = this.changeSrc.bind(this);
     }
 
     mount(event) {
+        this.clickChk = true;
         // 아밴트 등록 (반대쪽이 눌려도 변경하도록)
         this.position === 'left' ? event.leftChangeSrc = this.changeSrc : event.rightChangeSrc = this.changeSrc;
 
         // 엘리먼트 쿼리 셀렉팅
         this.button = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__button');
-        this.modal = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__modal');
         this.nameEle = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__pText');
         this.groupEle = document.querySelector('.game-ideal-type-card' + '-' + this.position + '__gText');
 
@@ -72,7 +71,10 @@ class IdealTypeCard extends Component {
                 template.addEventListener('animationend', () => {
                     if (template.classList.contains('fade_In')) return;
                     // 증가시 게임이 끝나면 결과 페이지로 이동 및 결과 반환
-                    event.resultLocation();
+                    if (this.changeScene === false)
+                        event.resultLocation();
+
+                    this.changeScene = true;
                 });
                 return;
             }

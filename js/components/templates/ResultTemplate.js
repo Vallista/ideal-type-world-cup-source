@@ -5,6 +5,7 @@ import ResultContents from './../organisms/ResultContents';
 import ResultButtonContents from './../organisms/ResultButtonContents';
 import { etc } from './../assets/Characters';
 import ImageLogo from './../atoms/Img';
+import ResultTreeView from './../organisms/ResultTreeView';
 
 class ResultTemplate extends Component {
     constructor() {
@@ -16,11 +17,13 @@ class ResultTemplate extends Component {
             style: 'main-game-logo__img',
             src: etc[0].src,
         });
+        this.resultTreeView = new ResultTreeView();
     }
 
     mount(event) {
         this.resultContents.mount(event);
         this.resultButtonsContents.mount(event);
+        this.resultTreeView.mount(event);
     }
 
     render() {
@@ -29,6 +32,7 @@ class ResultTemplate extends Component {
             <div class="result-template flex-container flex-center-sort flex-column">
                 ${this.resultContents.render()}
                 ${this.resultButtonsContents.render()}
+                ${this.resultTreeView.render()}
             </div>
         `;
     }

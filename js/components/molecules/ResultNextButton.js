@@ -13,7 +13,11 @@ class ResultNextButton extends Component {
     }
 
     mount(event) {
-
+        this.buttonElem = document.querySelector('.result-next__button');
+        this.buttonElem.addEventListener('click', () => {
+            const contents = document.querySelector('.result-result-contents-wrapper');
+            contents.classList.add('result-result-contents-move');
+        });
     }
 
     render() {
