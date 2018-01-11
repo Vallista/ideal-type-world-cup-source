@@ -1,1 +1,29 @@
 .result-tree-view-wrapper
+  width: 100%
+  height: 100%
+  transform: translateX(200vw)
+
+.result-tree-view-move-left
+  animation: moveLeftTree 1s both
+
+.result-tree-view-move-right
+  animation: moveRightTree 1s both
+
+@keyframes moveLeftTree
+  0%
+    opacity: 0
+    transform: translateX(100vw)
+  30%
+    opacity: 0
+  100%
+    opacity: 1
+    transform: translateX(0vw)
+
+@keyframes moveRightTree
+  0%
+    opacity: 1
+    transform: translateX(0vw)
+  30%
+    opacity: 0
+  100%
+    transform: translateX(100vw)

@@ -24,11 +24,11 @@ class ResultTemplate extends Component {
     }
 
     render() {
-            // ${this.resultTreeView.render()}
         return `
             ${this.imageLogo.render()}
-            <div class="result-template flex-container flex-center-sort flex-column">
+            <div class="result-template flex-container flex-center-sort flex-row">
                 ${this.resultContents.render()}
+                ${this.resultTreeView.render()}
             </div>
         `;
     }

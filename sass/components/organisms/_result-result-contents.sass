@@ -2,12 +2,28 @@
   width: 100%
   height: 100%
   margin: 0 auto
+  position: absolute
 
-.result-result-contents-move
-  animation: moveLeft 2s both
+.result-result-contents-move-left
+  animation: moveLeft 1s both
+
+.result-result-contents-move-right
+  animation: moveRight 1s both
 
 @keyframes moveLeft
   0%
+    opacity: 1
     transform: translateX(0)
+  30%
+    opacity: 0
   100%
-    transform: translateX(-200vw)
+    transform: translateX(-100vw)
+
+@keyframes moveRight
+  0%
+    transform: translateX(-100vw)
+  30%
+    opacity: 0
+  100%
+    opacity: 1
+    transform: translateX(0vw)
