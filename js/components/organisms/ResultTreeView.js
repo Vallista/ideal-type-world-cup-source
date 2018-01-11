@@ -25,21 +25,44 @@ class ResultTreeView extends Component {
         this.backButton.mount(this);
 
         this.treeNodes = [];
-        console.log(this.store.result.tree);
         // 이차원 배열 데이터 일차원 배열 노말라이즈
         this.store.result.tree.forEach((datas, index) => {
-            console.log(this.store.result.tree.length - index);
-            console.log('index : ' + index);
-            this.treeNodes.push(datas[(this.store.result.tree.length) - index]);
+            this.treeNodes.push(...this.store.result.tree[(this.store.result.tree.length - 1) - index]);
         });
 
-        console.log(this.treeNodes);
+        let indexCount = 0;
+        let stackData = 1;
+        let circulateStack = 1;
+        let stringAttribute = '<ul class="result-tree-view-section">';
+        // string attribute 해줌 (render functions)
+        // 뎁스 만들어야 함.
+        this.treeNodes.forEach((node, index) => {
+            indexCount += 1;
+            const itemClass = (index === 0) ? 'result-tree-node-items' : (index % 2 === 0) ? 'result-tree-node-items-right' : 'result-tree-node-items-left';
+            stringAttribute += `<li class='${itemClass}'><div class='result-tree-node' 
+                                style='background-image: url("${node.data.src}"); width: ${200 / circulateStack}px; height: ${200 / circulateStack}px;'></div></li>`;
+
+            if (stackData === indexCount) {
+                stringAttribute += '</ul>';
+
+                if ((this.treeNodes.length - 1) === index) { return; }
+
+                indexCount = 0;
+                stackData *= 2;
+                circulateStack += 1;
+                stringAttribute += '<ul class="result-tree-view-section">';
+            }
+        });
+
+        this.treeViewElem = document.querySelector('.result-tree-view');
+        this.treeViewElem.innerHTML = stringAttribute;
     }
 
     render() {
         return `
             <div class="result-tree-view-wrapper flex-container flex-center-sort flex-column">
-                <div class="flex-container flex-center-sort flex-row">
+                <div class="result-tree-view flex-container flex-center-sort flex-column"></div>
+                <div class="result-button-view flex-container flex-center-sort flex-row">
                     ${this.backButton.render()}
                     ${this.retryButton.render()}
                     ${this.goToHomeButton.render()}

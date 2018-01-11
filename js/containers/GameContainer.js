@@ -7,12 +7,13 @@ import Router from '../router/Router';
 
 /* 데이터 단위 */
 class Node {
-    constructor({ name, group, src }) {
-        // 데이터는 이미지 소스와 이름, 그룹에 대해 담고있음
+    constructor({ name, group, src, select }) {
+        // 데이터는 이미지 소스와 이름, 그룹, 선택여부에 대해 담고있음
         this.data = {
             src,
             name,
             group,
+            select,
         };
     }
 }
@@ -49,7 +50,7 @@ class Tree {
     /* 트리 초기화 */
     init(array) {
         // 이미지 배열을 받아서 처음 일차원 배열 데이터에 넣음.
-        this.nodeArray = array.map(node => new Node({ name: node.name, group: node.group, src: node.src }));
+        this.nodeArray = array.map(node => new Node({ name: node.name, group: node.group, src: node.src, select: false }));
         // 이미지를 섞음
         this.randomize();
         // 이미지를 선택한 강 수 만큼 덜어냄
@@ -101,12 +102,15 @@ class Tree {
         // x, y 값을 설정
         const x = (this.store.values.currentRound - 1) * 2;
         const y = this.store.values.currentStage - 1;
+
         // 기본적으로 왼쪽
         let data = this.resultArray[y][x - 2];
 
         // 오른쪽 선택
-        if (dir === 'right') data = this.resultArray[y][x - 1];
-
+        if (dir === 'right') {
+            data = this.resultArray[y][x - 1];
+        }
+        
         if (this.store.values.displayStage / 2 !== 1) {
             this.resultArray[y + 1].push(data);
         } else {
