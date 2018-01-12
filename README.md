@@ -4,7 +4,7 @@
 
 [Demo Github Page](https://vallista.github.io/ideal-type-world-cup/)
 
-### 실행 이미지
+## 실행 이미지
 
 ![이미지1](https://github.com/Vallista/ideal-type-world-cup/blob/master/screenShots/1.png?raw=true)
 
