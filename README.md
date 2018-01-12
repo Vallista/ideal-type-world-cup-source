@@ -4,6 +4,16 @@
 
 [Demo Github Page](https://vallista.github.io/ideal-type-world-cup/)
 
+### 실행 이미지
+
+![이미지1](https://github.com/Vallista/ideal-type-world-cup/blob/master/screenShots/1.png?raw=true)
+
+![이미지2](https://github.com/Vallista/ideal-type-world-cup/blob/master/screenShots/2.png?raw=true)
+
+![이미지3](https://github.com/Vallista/ideal-type-world-cup/blob/master/screenShots/3.png?raw=true)
+
+![이미지4](https://github.com/Vallista/ideal-type-world-cup/blob/master/screenShots/4.png?raw=true)
+
 ## 설치
     $ git clone https://github.com/Vallista/ideal-type-world-cup-source.git
     $ cd ideal-type-world-cup-source
